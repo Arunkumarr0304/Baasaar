@@ -5,10 +5,14 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
 import { login_items } from '../../components/Data';
 import {Link} from "expo-router";
+import {Redirect, router} from "expo-router";
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
+    const login = () => {
+      router.push('home');
+  }
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -48,7 +52,7 @@ const Login = () => {
             </View>
           </View>
           <Link style={styles.forget} href="/forget_password">Forgot password</Link>
-          <Button buttonText="login" />
+          <Button buttonText="login" onPress={login} />
           <View style={styles.login_items}>
             <Text style={styles.log_text}>Login with account</Text>
             <View style={styles.login_items_container}>

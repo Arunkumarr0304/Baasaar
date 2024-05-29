@@ -6,8 +6,8 @@ import { pages } from "../components/Data";
 import { router } from "expo-router";
 import Button from "../components/Button/Button";
 import Pagination from "../components/Pagination/Pagination";
-import { useFonts, Kalam_400Regular, Kalam_700Bold } from '@expo-google-fonts/kalam';
 import * as SplashScreen from 'expo-splash-screen';
+import { useFonts, Kalam_400Regular, Kalam_700Bold } from '@expo-google-fonts/kalam';
 
 const { width, height } = Dimensions.get('window');
 
@@ -36,8 +36,10 @@ export default function App() {
   const paginationOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    animateContent();
-  }, [activePageIndex]);
+    if (fontsLoaded) {
+      animateContent();
+    }
+  }, [activePageIndex, fontsLoaded]);
 
   const animateContent = () => {
     Animated.sequence([
@@ -68,7 +70,7 @@ export default function App() {
   };
 
   if (!fontsLoaded) {
-    return null;  // Return null until fonts are loaded
+    return null;
   }
 
   return (
@@ -93,10 +95,10 @@ export default function App() {
       </ScrollView>
       
       <View style={styles.onboard_content}>
-        <Animated.Text style={[styles.heading, { opacity: headingOpacity }]}>
+        <Animated.Text style={[styles.heading, { opacity: headingOpacity, fontFamily: 'Kalam_400Regular' }]}>
           {pages[activePageIndex].heading}
         </Animated.Text>
-        <Animated.Text style={[styles.heading2, { opacity: heading2Opacity }]}>
+        <Animated.Text style={[styles.heading2, { opacity: heading2Opacity, fontFamily: 'Kalam_400Regular' }]}>
           {pages[activePageIndex].heading2}
         </Animated.Text>
         <Animated.Text style={[styles.description, { opacity: descriptionOpacity }]}>
@@ -153,17 +155,15 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 42,
     lineHeight: 66,
-    fontWeight: '700',
-    color: '#ffffff',
-    fontFamily: 'Kalam_700Bold',
+    fontWeight: '690',
+    color: '#ffffff',    
   },
   heading2: {
     fontSize: 42,
     lineHeight: 66,
-    fontWeight: '700',
+    fontWeight: '600',
     color: '#FFB709',
     marginBottom: 20,
-    fontFamily: 'Kalam_700Bold',
   },
   description: {
     fontSize: 16,
@@ -172,11 +172,10 @@ const styles = StyleSheet.create({
     color: '#BABABA',
     fontStyle: 'normal',
     marginBottom: 20,
-    fontFamily: 'Kalam_400Regular',
   },
   page_button_container: {
     flexDirection: 'row',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   nextButton: {
