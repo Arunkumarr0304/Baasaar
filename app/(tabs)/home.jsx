@@ -9,6 +9,8 @@ import Swiper from 'react-native-swiper';
 import { scroll_slider, slider_data } from '../../components/Data';
 import Arrows from "../../assets/images/slider_arrow.svg";
 import Feature from '../../components/Feature/Feature';
+import Recommend from '../../components/Recommend/Recommend';
+import { router } from 'expo-router';
 
 const Home = () => {
   const [activeId, setActiveId] = useState(scroll_slider[0].id);
@@ -25,14 +27,14 @@ const Home = () => {
           </View>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.searchSection}>
           <Feather name="search" style={styles.searchIcon} />
           <TextInput
-            style={styles.searchInput}
-            placeholder="Search product name"
-            placeholderTextColor="#999999"
-          />
+  style={styles.searchInput}
+  placeholder="Search..."
+  onPress={() => router.push('search')}
+/>
         </View>
         <Swiper
           style={styles.wrapper}
@@ -97,6 +99,7 @@ const Home = () => {
           ))}
         </ScrollView>
         <Feature />
+        <Recommend />
       </ScrollView>
     </View>
   );
@@ -108,6 +111,8 @@ const styles = StyleSheet.create({
   Homepage: {
     paddingHorizontal: 20,
     paddingTop: 50,
+    flex: 1,
+    backgroundColor:'#ffffff',
   },
   header: {
     flexDirection: 'row',

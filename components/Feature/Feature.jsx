@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import React from 'react';
 import { feature_data } from '../Data';
 import Collection from "../../assets/images/collection.svg";
+import Right from "../../assets/images/collection_group.svg";
 
 const Feature = () => {
   return (
@@ -17,29 +18,37 @@ const Feature = () => {
             {d.image}
             <View style={styles.box_body}>
               <Text style={styles.box_heading}>{d.heading}</Text>
-              <Text style={styles.price}>{d.price}</Text>
+              <Text style={styles.price}>${d.price}</Text>
             </View>
           </View>
         ))}
       </ScrollView>
       <View style={styles.image_box}>
         <Collection />
+        <View style={styles.image_content}>
+          <View style={styles.left_content}>
+            <Text style={styles.left_head}>NEW COLLECTION</Text>
+            <Text style={styles.left_text}>HANG OUT & PARTY</Text>
+          </View>
+          <Right />
         </View>
+      </View>
     </View>
   )
 }
 
-export default Feature
+export default Feature;
 
 const styles = StyleSheet.create({
   feature_section: {
     paddingVertical: 30,
-    marginBottom: 30,
+    alignItems: 'center',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '90%',
   },
   heading: {
     fontSize: 18,
@@ -76,8 +85,40 @@ const styles = StyleSheet.create({
     color: '#FF0000',
   },
   image_box: {
+    position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 30,
-  }
-})
+    marginTop: 30,
+    width: '100%',
+    paddingLeft: 20,
+  },
+  image_content: {
+    position: 'absolute',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 18,
+    paddingHorizontal: 20,
+    width: '100%',
+  },
+  left_content: {
+    flexDirection: 'column',
+  },
+  left_head: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontWeight: '700',
+    color: '#FFB709',
+    borderLeftColor: '#FF0000',
+    borderLeftWidth: 1,
+    paddingLeft: 10,
+  },
+  left_text: {
+    fontSize: 22,
+    lineHeight: 26,
+    fontWeight: '300',
+    maxWidth: 120,
+    color: '#ffffff',
+    marginTop: 10,
+  },
+});

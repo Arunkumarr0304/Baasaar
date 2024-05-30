@@ -1,12 +1,16 @@
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Tabs } from 'expo-router';
-import React, { useContext } from 'react';
-import { FontAwesome } from '@expo/vector-icons';
+import React from 'react';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import CategoryIcon from '../../components/CategoryIcon';  
 
-
-const TabIcon = ({ icon, color }) => {
+const TabIcon = ({ icon, color, custom, library }) => {
+  if (custom) {
+    return custom;
+  }
+  const IconComponent = library === 'FontAwesome' ? FontAwesome : MaterialIcons;
   return (
-    <FontAwesome
+    <IconComponent
       name={icon}
       size={24}
       color={color}
@@ -30,61 +34,60 @@ const TabBarButton = ({ children, onPress, accessibilityState }) => {
 };
 
 const TabsLayout = () => {
- 
   return (
     <View style={styles.main_tab}>
-    <Tabs
-      screenOptions={({ route }) => ({
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: '#ffffff',
-        tabBarInactiveTintColor: '#474747',
-        tabBarButton: (props) => (
-          <TabBarButton {...props} />
-        ),
-        tabBarStyle: styles.tabBar,
-      })}
-    >
-      <Tabs.Screen 
-        name="home" 
-        options={{
-          title: 'Home',
-          headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <TabIcon icon="home" color={color} />
+      <Tabs
+        screenOptions={({ route }) => ({
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: '#ffffff',
+          tabBarInactiveTintColor: '#474747',
+          tabBarButton: (props) => (
+            <TabBarButton {...props} />
           ),
-        }} 
-      />
-      <Tabs.Screen 
-        name="category" 
-        options={{
-          title: 'Category',
-          headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <TabIcon icon="ticket" color={color} />
-          ),
-        }} 
-      />
-      <Tabs.Screen 
-        name="wishlist" 
-        options={{
-          title: 'Wishlist',
-          headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <TabIcon icon="bookmark" color={color} />
-          ),
-        }} 
-      />
-      <Tabs.Screen 
-        name="profile" 
-        options={{
-          title: 'Profile',
-          headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <TabIcon icon="user" color={color} />
-          ),
-        }} 
-      />
-    </Tabs>
+          tabBarStyle: styles.tabBar,
+        })}
+      >
+        <Tabs.Screen 
+          name="home" 
+          options={{
+            title: 'Home',
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <TabIcon icon="home" color={color} library="FontAwesome" />
+            ),
+          }} 
+        />
+        <Tabs.Screen 
+          name="category" 
+          options={{
+            title: 'Category',
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <TabIcon custom={<CategoryIcon color={color} />} />
+            ),
+          }} 
+        />
+        <Tabs.Screen 
+          name="wishlist" 
+          options={{
+            title: 'Wishlist',
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <TabIcon icon="favorite-border" color={color} library="MaterialIcons" />
+            ),
+          }} 
+        />
+        <Tabs.Screen 
+          name="profile" 
+          options={{
+            title: 'Profile',
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <TabIcon icon="user" color={color} library="FontAwesome" />
+            ),
+          }} 
+        />
+      </Tabs>
     </View>
   );
 };
@@ -94,27 +97,28 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabBar: {
+    width: '100%',
     borderTopWidth: 0,
     elevation: 0,
-    backgroundColor: '#f1f1f1',
-    paddingVertical: 5,
-    marginHorizontal: 30,
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    marginVertical: 20,
+    backgroundColor: '#151515',
+    paddingBottom: 20,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    paddingHorizontal: 20,
   },
   tabButton: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
-    margin: 5,
-    maxWidth: 45,
-    minWidth: 45,
-    marginRight: 25,
+    borderRadius: 80,
+    minHeight: 48,
   },
   activeTabButton: {
-    backgroundColor: '#3C4E9B',
+    backgroundColor: '#FF0000',
+    minHeight: 58,
+    marginTop: -25,
+    minWidth: 58,
+    maxWidth: 58,
   },
 });
 

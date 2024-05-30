@@ -25,6 +25,19 @@ import Feature1 from "../assets/images/feature1.svg";
 import Feature2 from "../assets/images/feature2.svg";
 import Feature3 from "../assets/images/feature3.svg";
 import Feature4 from "../assets/images/feature4.svg";
+import Feature5 from "../assets/images/feature5.svg";
+import Feature6 from "../assets/images/feature6.svg";
+import Feature7 from "../assets/images/feature7.svg";
+import Feature8 from "../assets/images/feature8.svg";
+
+import Recommend1 from "../assets/images/recommend1.svg";
+import Recommend2 from "../assets/images/recommend2.svg";
+
+import Collection2 from "../assets/images/collection2.svg";
+import Collection3 from "../assets/images/collection3.svg";
+
+import Star from "../assets/images/Star.svg";
+import White_Star from "../assets/images/White_star.svg";
 
 export const pages = [
     {
@@ -151,24 +164,144 @@ export const feature_data = [
         id: 1,
         image: <Feature1 />,
         heading: "Turtleneck Sweater",
-        price: "$ 39.99",
+        price: " 39.99",
     },
     {
         id: 2,
         image: <Feature2 />,
         heading: "Long Sleeve Dress",
-        price: "$ 45.00",
+        price: " 45.00",
     },
     {
         id: 3,
         image: <Feature3 />,
         heading: "Sportwear Set",
-        price: "$ 80.00",
+        price: " 80.00",
     },
     {
         id: 4,
         image: <Feature4 />,
         heading: "Elegant Dress",
-        price: "$ 75.00",
+        price: " 75.00",
+    },
+    {
+        id: 5,
+        image: <Feature5 />,
+        heading: "Apple Watch SE",
+        price: " 39.99",
+    },
+    {
+        id: 6,
+        image: <Feature6 />,
+        heading: "Apple Watch SE",
+        price: " 45.00",
+    },
+    {
+        id: 7,
+        image: <Feature7 />,
+        heading: "Long Sleeve Dress",
+        price: " 80.00",
+    },
+    {
+        id: 8,
+        image: <Feature8 />,
+        heading: "Elegant Dress",
+        price: " 75.00",
+    },
+    
+]
+
+export const recommend_data = [
+    {
+        id: 1,
+        image: <Recommend1 />,
+        heading: 'Apple Watch SE',
+        price: '$ 299.00',
+    },
+    {
+        id: 2,
+        image: <Recommend2 />,
+        heading: 'Cotton T-shirt',
+        price: '$ 30.00',
+    },
+]
+
+export const collection_data = [
+    {
+        id: 1,
+        image: <Collection3 />,
+        heading: 'T-Shirts',
+        text: 'The Office Life',
+    },
+    {
+        id: 2,
+        image: <Collection2 />,
+        heading: 'Dresses',
+        text: 'Elegant Design',
+    },
+]
+
+
+export const circle_data = [
+    {
+        id: 1,
+        backgroundColor: "#FFB709",
+    },
+    {
+        id: 2,
+        backgroundColor: "#FF0000",
+    },
+    {
+        id: 3,
+        backgroundColor: "#151515",
+    },
+    {
+        id: 4,
+        backgroundColor: "#44565C",
+    },
+    {
+        id: 5,
+        backgroundColor: "#E4E4E4",
+    },
+    {
+        id: 6,
+        backgroundColor: "#6D4F44",
+    },
+    {
+        id: 7,
+        backgroundColor: "#DFA8A9" 
+       },
+]
+
+export const circledata2 = [ 
+    {
+        id: 1,
+        star: <Star />,
+        White_Star: <White_Star />,
+        number: '1',
+    },
+    {
+        id: 2,
+        star: <Star />,
+        White_Star: <White_Star />,
+        number: '2',
+    },
+    {
+        id: 3,
+        star: <Star />,
+        White_Star: <White_Star />,
+        number: '3',
+    },
+    {
+        id: 4,
+        star: <Star />,
+        White_Star: <White_Star />,
+        number: '4',
+    },
+    {
+        id: 5,
+        star: <Star />,
+        White_Star: <White_Star />,
+        number: '5',
     },
 ]
