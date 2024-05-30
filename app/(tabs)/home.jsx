@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, ScrollView, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 import Category from '../../assets/images/category.svg';
 import Cart from '../../assets/images/bag.svg';
 import Notification from '../../assets/images/notification.svg';
@@ -8,8 +8,11 @@ import Feather from 'react-native-vector-icons/Feather';
 import Swiper from 'react-native-swiper';
 import { scroll_slider, slider_data } from '../../components/Data';
 import Arrows from "../../assets/images/slider_arrow.svg";
+import Feature from '../../components/Feature/Feature';
 
 const Home = () => {
+  const [activeId, setActiveId] = useState(scroll_slider[0].id);
+
   return (
     <View style={styles.Homepage}>
       <View style={styles.header}>
@@ -45,44 +48,55 @@ const Home = () => {
         >
           {slider_data.map((d) => (
             <View
-               
               style={styles.slider_box} 
               key={d.id}
             >
               <View style={styles.slider_image_box}>
-              {d.background_image}
+                {d.background_image}
               </View>
               <View style={styles.slider_content}>
-              <View style={styles.slider_left}>
-                <Text style={styles.left_text1}>{d.heading}</Text>
-                <Text style={styles.left_text2}>{d.heading2}<Text style={styles.red}>{d.percentage}</Text><Text style={styles.left_text2}>{d.heading3}</Text></Text>
-                <TouchableOpacity style={styles.shop_box}>
-                <Text style={styles.shop}>{d.shop}</Text>
-                <View style={styles.image_box}>
-                <Arrows />
+                <View style={styles.slider_left}>
+                  <Text style={styles.left_text1}>{d.heading}</Text>
+                  <Text style={styles.left_text2}>{d.heading2}<Text style={styles.red}>{d.percentage}</Text><Text style={styles.left_text2}>{d.heading3}</Text></Text>
+                  <TouchableOpacity style={styles.shop_box}>
+                    <Text style={styles.shop}>{d.shop}</Text>
+                    <View style={styles.image_box}>
+                      <Arrows />
+                    </View>
+                  </TouchableOpacity>
                 </View>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.slider_right}>{d.right}</View>
+                <View style={styles.slider_right}>{d.right}</View>
               </View>
             </View>
           ))}
         </Swiper>
 
-        <View style={styles.scroll_container}>
-          {
-            scroll_slider.map((d) => (
-              <View style={styles.scroll_slider_box} key={d.id}>
-                <View style={styles.image_circle}>
-                  <View style={styles.inside_circle}>
-                  {d.image}
-                  </View>
+        <ScrollView horizontal={true} style={styles.scroll_container}>
+          {scroll_slider.map((d) => (
+            <TouchableOpacity
+              style={[
+                styles.scroll_slider_box, 
+                activeId === d.id && styles.activeScrollSliderBox
+              ]}
+              key={d.id}
+              onPress={() => setActiveId(d.id)}
+            >
+              <View style={[
+                styles.image_circle, 
+                activeId === d.id && styles.activeImageCircle
+              ]}>
+                <View style={[
+                  styles.inside_circle,
+                  activeId === d.id && styles.activeInsideCircle
+                ]}>
+                  {activeId === d.id ? d.active : d.image}
                 </View>
-                <Text style={styles.scroll_text}>{d.text}</Text>
               </View>
-            ))
-          }
-        </View>
+              <Text style={[styles.scroll_text, activeId === d.id && styles.activetext]}>{d.text}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+        <Feature />
       </ScrollView>
     </View>
   );
@@ -145,15 +159,12 @@ const styles = StyleSheet.create({
   slider_content: {
     position: 'absolute',
     flexDirection: 'row',
-    
   },
   slider_left: {
     paddingLeft: 20,
     paddingTop: 20,
   },
-  slider_right: {
-  
-  },
+  slider_right: {},
   left_text1: {
     fontSize: 14,
     lineHeight: 24,
@@ -186,7 +197,8 @@ const styles = StyleSheet.create({
     margin: 3,
   },
   activeDotStyle: {
-    backgroundColor: '#FFB709',
+    backgroundColor: '#FF0000',
+    borderColor: '#FF0000',
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -196,14 +208,15 @@ const styles = StyleSheet.create({
     color: '#FF0000',
   },
   scroll_container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     marginTop: 25,
   },
   scroll_slider_box: {
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+  },
+  activeScrollSliderBox: {
+    
   },
   image_circle: {
     alignItems: 'center',
@@ -212,19 +225,38 @@ const styles = StyleSheet.create({
     minWidth: 50,
     maxWidth: 50,
     minHeight: 50,
-    maxHeight:50,
+    maxHeight: 50,
     padding: 15,    
     borderWidth: 1,
+    borderColor: 'transparent',
+  },
+  activeImageCircle: {
+    borderColor: '#FF0000',
   },
   inside_circle: {
     borderRadius: 100,
     minWidth: 40,
     maxWidth: 40,
     minHeight: 40,
-    maxHeight:40,
+    maxHeight: 40,
     padding: 15,   
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F6F6F6',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  activeInsideCircle: {
+    backgroundColor: '#FF0000',
+  },
+  scroll_text: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '400',
+    color: '#969696',
+  },
+  activetext: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '500',
+    color: '#3A2C27',
   }
 });
