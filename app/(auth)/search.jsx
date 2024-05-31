@@ -148,8 +148,12 @@ const Search = () => {
           <View style={styles.modalContainer}>
             
             <TouchableOpacity onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeModal}>Close</Text>
+              
               <Filters />
+              <View style={styles.buttons_container}>
+              <Text style={styles.closeModal}>Close</Text>
+              <Text style={styles.closeModal2}>Close</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -279,8 +283,35 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   closeModal: {
-    fontSize: 16,
-    color: '#007BFF',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+    color: '#4C4C4C',
     marginTop: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#D6D6D6',
+    backgroundColor: '#D6D6D6',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
   },
+  closeModal2: {
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+    color: '#ffffff',
+    marginTop: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#D6D6D6',
+    backgroundColor: '#FF0000',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+  },
+  buttons_container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 13,
+  }
 });

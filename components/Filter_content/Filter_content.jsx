@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Filter from "../../assets/images/Filter.svg";
 import PriceSlider from '../Price_Slider/Price_Slider';
-import { circle_data, circledata2 } from '../Data';
+import { circle_data, circledata2, discount_data } from '../Data';
 import Dress from "../../assets/images/Dress.svg";
 import Drop from "../../assets/images/category_drop_down.svg";
 
 const Filters = () => {
     const [activeStar, setActiveStar] = useState(circledata2[1].id);
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('Crop Tops');
     const [showCategoryOptions, setShowCategoryOptions] = useState(false);
+    const [discounts, setDiscounts] = useState(discount_data);
 
     const handleStarPress = (id) => {
         setActiveStar(id);
@@ -22,6 +23,10 @@ const Filters = () => {
     const selectCategory = (category) => {
         setSelectedCategory(category);
         setShowCategoryOptions(false);
+    };
+
+    const removeDiscount = (id) => {
+        setDiscounts(discounts.filter((d) => d.id !== id));
     };
 
     return (
@@ -65,10 +70,10 @@ const Filters = () => {
                     {selectedCategory ? selectedCategory : 'Select category'}
                 </Text>
                 <View style={styles.image_box1}>
-                <Dress  />
+                    <Dress />
                 </View>
                 <View style={styles.image_box2}>
-                <Drop />
+                    <Drop />
                 </View>
             </TouchableOpacity>
             {showCategoryOptions && (
@@ -84,6 +89,17 @@ const Filters = () => {
                     </TouchableOpacity>
                 </View>
             )}
+            <Text style={styles.price}>Discount</Text>
+            <View style={styles.discount_container}>
+                {discounts.map((d) => (
+                    <View style={styles.discount_stack} key={d.id}>
+                        <Text style={styles.discount_text}>{d.offer}</Text>
+                        <TouchableOpacity onPress={() => removeDiscount(d.id)} style={styles.closeButton}>
+                            <Text style={styles.closeButtonText}>X</Text>
+                        </TouchableOpacity>
+                    </View>
+                ))}
+            </View>
         </View>
     );
 };
@@ -160,10 +176,14 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 10,
         position: 'relative',
+        justifyContent: 'center',
     },
     selectedCategory: {
-        fontSize: 16,
-        color: '#000000',
+        fontSize: 13,
+        lineHeight: 15,
+        fontWeight: '600',
+        color: '#33302E',
+        paddingLeft: 10,
     },
     categoryOptions: {
         marginTop: 5,
@@ -179,12 +199,48 @@ const styles = StyleSheet.create({
     },
     image_box1: {
         position: 'absolute',
-        top: 10,
+        top: 8,
         left: 7,
     },
     image_box2: {
         position: 'absolute',
-        top: 20,
+        top: 15,
         right: 8,
-    }
+    },
+    discount_container: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 20,
+        marginTop: 15,
+    },
+    discount_stack: {
+        borderRadius: 50,
+        borderWidth: 1.5,
+        borderColor: '#BABABA',
+        paddingVertical: 15,
+        paddingHorizontal: 10,
+        position: 'relative',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    discount_text: {
+        marginRight: 10,
+        fontSize: 13,
+        lineHeight: 15,
+        fontWeight: '600',
+        color: '#151515',
+    },
+    closeButton: {
+        borderRadius: 50,
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    closeButtonText: {
+        color: '#000000',
+        fontSize: 17,
+        fontWeight: '700',
+    },
 });

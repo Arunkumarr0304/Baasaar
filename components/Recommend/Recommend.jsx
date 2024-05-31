@@ -3,13 +3,14 @@ import React from 'react';
 import { collection_data, recommend_data } from '../Data';
 import Collection from "../../assets/images/top_collection.svg";
 import Right from "../../assets/images/top_collection_group.svg";
+import {Link} from "expo-router";
 
 const Recommend = () => {
   return (
     <View style={styles.recommend_section}>
       <View style={styles.header}>
         <Text style={styles.heading}>Recommended</Text>
-        <Text style={styles.show}>show all</Text>
+        <Link style={styles.show} href="/all_products">show all</Link>
       </View>
       <ScrollView horizontal={true} style={styles.stack_container} showsHorizontalScrollIndicator={false}>
         {recommend_data.map((d) => (
@@ -24,7 +25,7 @@ const Recommend = () => {
       </ScrollView>
       <View style={styles.header}>
         <Text style={styles.heading}>Top Collection</Text>
-        <Text style={styles.show}>show all</Text>
+        <Link style={styles.show} href="/all_products">show all</Link>
       </View>
       <View style={styles.image_box}>
         <Collection />

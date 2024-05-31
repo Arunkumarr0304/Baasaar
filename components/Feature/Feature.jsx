@@ -1,26 +1,31 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { feature_data } from '../Data';
 import Collection from "../../assets/images/collection.svg";
 import Right from "../../assets/images/collection_group.svg";
+import {Link, router} from "expo-router";
+
 
 const Feature = () => {
+   const details = () => {
+    router.push('product_details');
+   }
   return (
     <View style={styles.feature_section}>
       <View style={styles.header}>
         <Text style={styles.heading}>Feature Products</Text>
-        <Text style={styles.show}>show all</Text>
+        <Link style={styles.show} href="/all_products">show all</Link>
       </View>
 
       <ScrollView horizontal={true} style={styles.container}>
         {feature_data.map((d) => (
-          <View style={styles.feature_box} key={d.id}>
+          <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details}>
             {d.image}
             <View style={styles.box_body}>
               <Text style={styles.box_heading}>{d.heading}</Text>
               <Text style={styles.price}>${d.price}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
       <View style={styles.image_box}>

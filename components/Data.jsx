@@ -39,6 +39,16 @@ import Collection3 from "../assets/images/collection3.svg";
 import Star from "../assets/images/Star.svg";
 import White_Star from "../assets/images/White_star.svg";
 
+import Watch1 from "../assets/images/watch1.svg";
+import Watch2 from "../assets/images/watch2.svg";
+import Watch3 from "../assets/images/watch3.svg";
+import Watch4 from "../assets/images/watch4.svg";
+import Watch5 from "../assets/images/watch5.svg";
+import Watch6 from "../assets/images/watch6.svg";
+
+import Cart1 from "../assets/images/cart_img1.svg";
+import Cart2 from "../assets/images/cart_img2.svg";
+
 export const pages = [
     {
         id: 1,
@@ -304,4 +314,137 @@ export const circledata2 = [
         White_Star: <White_Star />,
         number: '5',
     },
+]
+
+
+
+export const discount_data = [
+    {
+        id: 1,
+        offer: '50% off',
+    },
+    {
+        id: 2,
+        offer: '40% off',
+    },
+    {
+        id: 3,
+        offer: '30% off',
+    },
+    {
+        id: 4,
+        offer: '25% off',
+    },
+]
+
+export const products_data = [
+    {
+        id: 1,
+        image: <Watch1 />,
+        Name: 'Apple Watch SE',
+        rating: '4.9',
+        brand: 'Apple',
+        dashed: '$799',
+        price: '349.99',
+    },
+    {
+        id: 2,
+        image: <Watch2 />,
+        Name: 'Apple Watch ultra',
+        rating: '4.9',
+        brand: 'Apple',
+        dashed: '$799',
+        price: '249.99',
+    },
+    {
+        id: 3,
+        image: <Watch3 />,
+        Name: 'Apple watch series',
+        rating: '4.9',
+        brand: 'Apple',
+    
+        price: '199.99',
+    },
+    {
+        id: 4,
+        image: <Watch4 />,
+        Name: 'Fastrack vyb mirage',
+        rating: '4.9',
+        brand: 'Apple',
+      
+        price: '279.99',
+    },
+    {
+        id: 5,
+        image: <Watch5 />,
+        Name: 'sonata poze quartz',
+        rating: '4.9',
+        brand: 'Apple',
+   
+        price: '$349.99',
+    },
+    {
+        id: 6,
+        image: <Watch6 />,
+        Name: 'Titan minimalist zen',
+        rating: '4.9',
+        brand: 'Apple',
+   
+        price: '$349.99',
+    },
+
+]
+
+export const circle_data2 = [
+    {
+        id: 1,
+        backgroundColor: "#FFB709",
+        text: 'yellow',
+    },
+    {
+        id: 2,
+        backgroundColor: "#839E76",
+        text: 'green',
+    },
+    {
+        id: 3,
+        backgroundColor: "#FF0000",
+        text: 'red',
+    },
+]
+
+export const details_review = [
+    {
+        id: 1,
+        heading: 'details',
+        description : 'Smartwatches have become increasingly popular as multifunctional devices that integrate seamlessly with smartphones and offer a range of features to enhance daily life',
+    },
+    {
+        id: 2,
+        heading: 'review', 
+        description: 'watches have become increasingly popular as multifunctional devices that integrate seamlessly with smartphones and offer a range of features to enhance daily life',
+    }
+]
+
+export const cart_data = [
+    {
+        id: 1,
+        image: <Cart1 />,
+        name: 'Apple Watch SE Gen 2',
+        delivery: 'Free Delivery',
+        dashed: '$280',
+        price: '200',
+        count: 1,
+    },
+    {
+        id: 2,
+        image: <Cart2 />,
+        name: 'Long Sleeve Dress',
+        option: 'size',
+        size: 'xl',
+        delivery: 'Free Delivery',
+        dashed: '$280',
+        price: '200',
+        count: 1,
+    }
 ]
