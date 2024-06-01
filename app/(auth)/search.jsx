@@ -17,6 +17,10 @@ const Search = () => {
   const [filteredFeatures, setFilteredFeatures] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const details = () => {
+    router.push('product_details');
+   }
+
   const goback = () => {
     router.push('home');
   }
@@ -127,13 +131,13 @@ const Search = () => {
         </View>
         <ScrollView horizontal={true} style={styles.featureContainer}>
           {filteredFeatures.map((d) => (
-            <View style={styles.feature_box} key={d.id}>
+            <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details} >
               {d.image}
               <View style={styles.box_body}>
                 <Text style={styles.box_heading}>{d.heading}</Text>
                 <Text style={styles.price}>${d.price}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </ScrollView>

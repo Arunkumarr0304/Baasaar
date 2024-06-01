@@ -17,10 +17,16 @@ const ProductDetails = () => {
     router.push('cart');
   } 
 
+  const goback = () =>{
+    router.push('home');
+  }
+
   return (
     <View style={styles.details_page}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={goback}>
         <Back />
+        </TouchableOpacity>
         <Text style={styles.heading}>Smart Watch</Text>
         <Notification />
       </View>

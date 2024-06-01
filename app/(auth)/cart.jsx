@@ -13,6 +13,9 @@ const Cart = () => {
   const goback = () => {
     router.push('product_details');
   }
+  const continues = () => {
+    router.push('checkout');
+  }
   const handleChangeText = (value) => {
     setPromoCode(value);
   };
@@ -96,7 +99,9 @@ const Cart = () => {
                 <Text style={styles.apply}>Apply</Text>
             </TouchableOpacity>
             </View>
-            <Button buttonText="continue" />
+            <View style={styles.button_box}>
+            <Button buttonText="continue" onPress={continues} />
+            </View>
             </ScrollView>
     </View>
   );
@@ -273,6 +278,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: 'center',
  
+  },
+  button_box: {
+    paddingBottom: 30,
   }
 });
 

@@ -448,3 +448,26 @@ export const cart_data = [
         count: 1,
     }
 ]
+
+
+
+export const shipping_method = [
+    {
+        id: 1,
+        method: 'Free',
+        to: 'Delivery to home',
+        time: 'Delivery from 3 to 7 business days',
+    },
+    {
+        id: 2,
+        method: '$ 9.90',
+        to: 'Delivery to home',
+        time: 'Delivery from 4 to 6 business days',
+    },
+    {
+        id: 3,
+        method: '$ 9.90',
+        to: 'Fast Delivery',
+        time: 'Delivery from 2 to 3 business days',
+    },
+]
