@@ -49,6 +49,15 @@ import Watch6 from "../assets/images/watch6.svg";
 import Cart1 from "../assets/images/cart_img1.svg";
 import Cart2 from "../assets/images/cart_img2.svg";
 
+import Card1 from "../assets/images/card1.svg";
+import Card2 from "../assets/images/card2.svg";
+
+import Pay1 from "../assets/images/pay1.svg";
+import Pay2 from "../assets/images/pay2.svg";
+import Pay3 from "../assets/images/pay3.svg";
+import Pay4 from "../assets/images/pay4.svg";
+import Pay5 from "../assets/images/pay5.svg";
+
 export const pages = [
     {
         id: 1,
@@ -470,4 +479,61 @@ export const shipping_method = [
         to: 'Fast Delivery',
         time: 'Delivery from 2 to 3 business days',
     },
+]
+
+export const payment_data = [
+    {
+        id: 1,
+        image: <Card1 />,
+        cardno: '4364 1345 8932 8378',
+        head1: "CARDHOLDER NAME",
+        head2: 'Minato Namikaza',
+        name: 'VALID THRU',
+        date: '05/24',
+    },
+    {
+        id: 2,
+        image: <Card2 />,
+        cardno: '4364 1345 8932 8378',
+        head1: "CARDHOLDER NAME",
+        head2: 'Minato Namikaza',
+        name: 'VALID THRU',
+        date: '05/24',
+    }
+]
+
+export const price_data = [
+    {
+        id: 1,
+        heading: 'Product price',
+        value: '$11',
+    },
+    {
+        id: 2,
+        heading: 'Shipping',
+        value: 'Freeship',
+    },
+]
+
+export const pay_types =[
+    {
+        id: 1,
+        image: <Pay1 />,
+    },
+    {
+        id: 2,
+        image: <Pay2 />,
+    },
+    {
+        id: 3,
+        image: <Pay3 />,
+    },
+    {
+        id: 4,
+        image: <Pay4 />,
+    },
+    {
+        id: 5,
+        image: <Pay5 />,
+    }
 ]
