@@ -51,6 +51,7 @@ import Cart2 from "../assets/images/cart_img2.svg";
 
 import Card1 from "../assets/images/card1.svg";
 import Card2 from "../assets/images/card2.svg";
+import Card3 from "../assets/images/card3.svg";
 
 import Pay1 from "../assets/images/pay1.svg";
 import Pay2 from "../assets/images/pay2.svg";
@@ -76,6 +77,9 @@ import Profile_icon3 from "../assets/images/profile_icon3.svg";
 import Profile_icon4 from "../assets/images/profile_icon4.svg";
 import Profile_icon5 from "../assets/images/profile_icon5.svg";
 import Profile_icon6 from "../assets/images/profile_icon6.svg";
+
+import Tick from "../assets/images/tick.svg";
+import Red_Tick from "../assets/images/red-tick.svg";
 
 export const pages = [
     {
@@ -814,4 +818,72 @@ export const ordered_data2 = [
         name: 'Order  #0D6765',
         items: '2 items',
     },
+]
+
+
+export const details_data = [
+    {
+        id: 1,
+        heading: 'Order Date',
+        value: '20/08/2024',
+    },
+    {
+        id: 2,
+        heading: 'Order No',
+        value: '#0D6765',
+    },
+    {
+        id: 3,
+        heading: 'Total Price',
+        value: '$ 579',
+    },
+]
+
+export const details_data2 = [
+    {
+        id: 1,
+        icon: <Red_Tick />,
+        heading: 'Order Placed',
+        value: '20 Dec',
+    },
+    {
+        id: 2,
+        icon: <Red_Tick />,
+        heading: 'Order Confirmed',
+        value: '22 Dec',
+    },
+    {
+        id: 3,
+        icon: <Red_Tick />,
+        heading: 'Shipped',
+        value: '24 Dec',
+    },
+    {
+        id: 4,
+        icon: <Tick />,
+        heading: 'Delivery on',
+        value: '27 Dec',
+    },
+]
+
+
+export const payment_data2 = [
+    {
+        id: 1,
+        image: <Card3 />,
+        cardno: '4364 1345 8932 8378',
+        head1: "CARDHOLDER NAME",
+        head2: 'Minato Namikaza',
+        name: 'VALID THRU',
+        date: '05/24',
+    },
+    {
+        id: 2,
+        image: <Card2 />,
+        cardno: '4364 1345 8932 8378',
+        head1: "CARDHOLDER NAME",
+        head2: 'Minato Namikaza',
+        name: 'VALID THRU',
+        date: '05/24',
+    }
 ]

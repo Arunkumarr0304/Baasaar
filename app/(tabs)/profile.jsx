@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import Profiles from "../../assets/images/Profile.svg";
@@ -7,10 +7,12 @@ import Dp from "../../assets/images/Dp.svg";
 import Arrow from "../../assets/images/profile_arrow.svg";
 import { profile_data, profile_data2, profile_data3 } from '../../components/Data';
 import CustomSwitch from '../../components/Switch/Custom_switch';
+import Logout from "../../assets/images/logout.svg";
 
 const Profile = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const edit = () => {
     router.push('my_profile');
@@ -18,12 +20,19 @@ const Profile = () => {
   const order = () => {
     router.push('myorder');
   };
+  const method = () => {
+    router.push('payment_method');
+  };
   const goback = () => {
     router.push('home');
   };
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
+
+  const handleLogoutPress = () => {
+    setModalVisible(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -56,7 +65,7 @@ const Profile = () => {
           <TouchableOpacity
             style={styles.line_box}
             key={d.id}
-            onPress={d.name === 'My Orders' ? order : null}
+            onPress={d.name === 'My Orders' ? order : d.name === 'Payments Methods' ? method : null}
           >
             <View style={styles.left_line}>
               {d.icon}
@@ -83,7 +92,11 @@ const Profile = () => {
       </View>
       <View style={styles.profile_lines3}>
         {profile_data3.map((d) => (
-          <TouchableOpacity style={styles.line_box} key={d.id}>
+          <TouchableOpacity 
+            style={styles.line_box} 
+            key={d.id} 
+            onPress={d.name === 'Logout' ? handleLogoutPress : null}
+          >
             <View style={styles.left_line}>
               {d.icon}
               <Text style={styles.line_text}>{d.name}</Text>
@@ -92,9 +105,44 @@ const Profile = () => {
           </TouchableOpacity>
         ))}
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modal_overlay}>
+          <View style={styles.modal_view}>
+            <View style={styles.image_box}>
+              <Logout />
+            </View>
+            <Text style={styles.modal_text}>Are you sure want to logout?</Text>
+            <View style={styles.modal_buttons}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonLogout]}
+                onPress={() => {
+                  // Handle logout logic here
+                  setModalVisible(false);
+                }}
+              >
+                <Text style={styles.textStyle2}>Logout</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
-}
+};
 
 export default Profile;
 
@@ -198,5 +246,66 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: '500',
     color: '#4C4C4C',
-  }
+  },
+  modal_overlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modal_view: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modal_text: {
+    marginVertical: 25,
+    textAlign: 'center',
+    fontSize: 14,
+    lineHeight: 18,
+    fontWeight: '500',
+    color: '#000000',
+  },
+  modal_buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  button: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    elevation: 2,
+    backgroundColor: '#EEEEEE',
+    width: '48%',
+    alignItems: 'center',
+  },
+  buttonLogout: {
+    backgroundColor: '#FF3B30',
+  },
+  textStyle: {
+    color: '#4C4C4C',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  textStyle2: {
+    color: '#ffffff',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
 });
+

@@ -19,6 +19,9 @@ const Payment = () => {
     const [isSelected, setSelection] = useState(false);
     const [scaleAnim] = useState(new Animated.Value(1));
 
+    const add = () => {
+        router.push('add_new');
+    };
     const order = () => {
         router.push('order_confirm');
     }
@@ -65,7 +68,7 @@ const Payment = () => {
             </View>
             <View style={styles.choose_row}>
                 <Text style={styles.choose}>Choose Your Card</Text>
-                <TouchableOpacity><Text style={styles.add}>Add New+</Text></TouchableOpacity>
+                <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
             <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
             <Swiper

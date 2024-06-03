@@ -1,16 +1,15 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,  TouchableOpacity } from 'react-native';
 import React from 'react';
 import Back from "../../assets/images/back.svg";
+import { details_data2 } from '../../components/Data';
 import { router } from 'expo-router';
-import { cart_data, details_data } from '../../components/Data';
-import Arrow from "../../assets/images/right_arrow.svg";
+import Line from "../../assets/images/vertical_line.svg";
+import Cart2 from "../../assets/images/cart_img2.svg";
+import Van from "../../assets/images/van.svg";
 
-const Order_details = () => {
+const Track = () => {
     const goback = () => {
-        router.push('myorder');
-    };
-    const track = () => {
-      router.push('track');
+        router.push('order_details');
     };
   return (
     <View style={styles.container}>
@@ -18,55 +17,50 @@ const Order_details = () => {
       <TouchableOpacity onPress={goback}>
         <Back />
       </TouchableOpacity>
-      <Text style={styles.heading}>Order Detail</Text>
+      <Text style={styles.heading}>Track Order</Text>
     </View>
     <View style={styles.details_container}>
-    <View style={styles.details_container2}>
         {
-          details_data.map((d) => (
+          details_data2.map((d) => (
             <View style={styles.row} key={d.id}>
+                <View style={styles.row_header}>
+                    {d.icon}
               <Text style={styles.row_heading}>{d.heading}</Text>
+              </View>
               <Text style={styles.row_value}>{d.value}</Text>
             </View>
           ))
         }
     </View>
-    <View style={styles.row2}></View>
-    <View style={styles.row}>
-              <Text style={styles.row_heading}>Cancel Order</Text>
-              <Arrow />
-            </View>
-    </View>
-    <Text style={styles.shipping}>Shipping Details</Text>
-
     <View style={styles.stack_container}>
-        {cart_data.map((d, index) => (
-          <View style={styles.stack_box} key={d.id}>
-            {d.image}
+          <View style={styles.stack_box}>
+            <Cart2 />
             <View style={styles.details}>
-              <Text style={styles.name}>{d.name}</Text>
+              <Text style={styles.name}>Long Sleeve Dress</Text>
               <View style={styles.optional_row}>
-                {d.option && <Text style={styles.option}>{d.option}</Text>}
-                {d.size && <Text style={styles.option}>{d.size}</Text>}
+                <Text style={styles.option}>Size:</Text>
+                <Text style={styles.option}>XL</Text>
               </View>
-              <Text style={styles.delivery}>{d.delivery}</Text>
+              <View style={styles.main_row}>
+                <View>
+              <Text style={styles.delivery}>Free Delivery</Text>
+              
               <View style={styles.price_row}>
-                <Text style={styles.dashed}>{d.dashed}</Text>
-                <Text style={styles.price}>/ ${d.price}</Text>
+                <Text style={styles.dashed}>$280</Text>
+                <Text style={styles.price}>/ $200</Text>
+              </View>
+              </View>
+              <Van />
               </View>
             </View>
           </View>
-        ))}
+    
       </View>
-      <TouchableOpacity style={styles.track_row} onPress={track}>
-        <Text style={styles.track}>Track Order</Text>
-        <Arrow />
-      </TouchableOpacity>
     </View>
   )
 }
 
-export default Order_details;
+export default Track;
 
 const styles = StyleSheet.create({
     container: {
@@ -93,14 +87,22 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#F1F1F1',
         padding: 16,
-      },
-      details_container2: {
         gap: 15,
+      },
+      main_row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10,
       },
       row: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+      },
+      row_header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 15,
       },
       row_heading: {
         fontSize: 16,
@@ -115,19 +117,6 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         color: '#4C4C4C',
       },
-      row2: {
-        borderTopWidth: 1,
-        borderColor: '#BABABA',
-        marginVertical: 30,
-      },
-      shipping: {
-        fontSize: 16,
-        lineHeight: 28,
-        fontWeight: '700',
-        color:'#000000',
-        marginTop: 30,
-        marginBottom: 20,
-      },
       stack_container: {
         gap: 24,
         marginTop: 24,
@@ -135,13 +124,14 @@ const styles = StyleSheet.create({
       stack_box: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#F1F1F1',
         borderRadius: 20,
         gap: 10,
         padding: 10,
       },
       details: {
         flex: 1,
+        padding: 5,
       },
       name: {
         fontSize: 14,
@@ -154,7 +144,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 12,
-        marginVertical: 5,
       },
       option: {
         fontSize: 12,
@@ -187,17 +176,4 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         color: '#151515',
       },
-      track_row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginVertical: 25,
-      },
-      track: {
-        fontSize: 18,
-        lineHeight: 26,
-        fontWeight: '700',
-        color: '#151515',
-        textTransform: 'capitalize',
-      }
 })

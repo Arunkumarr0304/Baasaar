@@ -9,7 +9,7 @@ import Arrow from "../../assets/images/right_arrow.svg";
 
 const Myorder = () => {
     const goback = () =>{
-        router.push('home');
+        router.push('profile');
     };
     const details = () => {
         router.push('order_details');
