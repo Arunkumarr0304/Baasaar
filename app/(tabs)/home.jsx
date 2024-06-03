@@ -14,6 +14,9 @@ import { router } from 'expo-router';
 
 const Home = () => {
   const [activeId, setActiveId] = useState(scroll_slider[0].id);
+  const notification = () => {
+    router.push('notification');
+  }
 
   return (
     <View style={styles.Homepage}>
@@ -22,9 +25,9 @@ const Home = () => {
         <Logo />
         <View style={styles.right_header}>
           <Cart />
-          <View style={styles.image_box}>
+          <TouchableOpacity style={styles.image_box} onPress={notification}>
             <Notification />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>

@@ -19,6 +19,10 @@ const AuthLayout = () => {
     <Stack.Screen name='checkout' options={{headerShown: false}} />
     <Stack.Screen name='payment' options={{headerShown: false}} />
     <Stack.Screen name='order_confirm' options={{headerShown: false}} />
+    <Stack.Screen name='notification' options={{headerShown: false}} />
+    <Stack.Screen name='myorder' options={{headerShown: false}} />
+    <Stack.Screen name='my_profile' options={{headerShown: false}} />
+    <Stack.Screen name='order_details' options={{headerShown: false}} />
    </Stack>
   )
 }

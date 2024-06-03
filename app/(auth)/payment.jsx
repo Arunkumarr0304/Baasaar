@@ -65,7 +65,7 @@ const Payment = () => {
             </View>
             <View style={styles.choose_row}>
                 <Text style={styles.choose}>Choose Your Card</Text>
-                <Text style={styles.add}>Add New+</Text>
+                <TouchableOpacity><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
             <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
             <Swiper

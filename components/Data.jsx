@@ -58,6 +58,25 @@ import Pay3 from "../assets/images/pay3.svg";
 import Pay4 from "../assets/images/pay4.svg";
 import Pay5 from "../assets/images/pay5.svg";
 
+import Wishlist1 from "../assets/images/wishlist1.svg";
+import Wishlist2 from "../assets/images/wishlist2.svg";
+
+import Category1 from "../assets/images/back.svg";
+import Category2 from "../assets/images/category1.svg";
+import Category3 from "../assets/images/category1.svg";
+import Category4 from "../assets/images/category1.svg";
+import Category5 from "../assets/images/category1.svg";
+
+import Opened from "../assets/images/opened.svg";
+import NotOpened from "../assets/images/notopened.svg";
+
+import Profile_icon1 from "../assets/images/profile_icon1.svg";
+import Profile_icon2 from "../assets/images/profile_icon2.svg";
+import Profile_icon3 from "../assets/images/profile_icon3.svg";
+import Profile_icon4 from "../assets/images/profile_icon4.svg";
+import Profile_icon5 from "../assets/images/profile_icon5.svg";
+import Profile_icon6 from "../assets/images/profile_icon6.svg";
+
 export const pages = [
     {
         id: 1,
@@ -536,4 +555,263 @@ export const pay_types =[
         id: 5,
         image: <Pay5 />,
     }
+]
+
+export const wishlist_data = [
+    {
+        id: 1,
+        image: <Wishlist1 />,
+        heading: "Amazfit GTS 2",
+        text: "ipsum dolor sit amet consectetur",
+        price: "$199.99",
+    },
+    {
+        id: 2,
+        image: <Wishlist2 />,
+        heading: "Amazfit GTS 2",
+        text: "Lorem ipsum dolor sit consectetur",
+        price: "$80.00",
+    },
+    {
+        id: 3,
+        image: <Wishlist1 />,
+        heading: "Amazfit GTS 2",
+        text: "ipsum dolor sit amet consectetur",
+        price: "$199.99",
+    },
+    {
+        id: 4,
+        image: <Wishlist2 />,
+        heading: "Amazfit GTS 2",
+        text: "Lorem ipsum dolor sit consectetur",
+        price: "$80.00",
+        },
+]
+
+export const category_tab = [
+    {
+        id: 1,
+        name: 'all',
+    },
+    {
+        id: 2,
+        name: 'female',
+    },
+    {
+        id: 3,
+        name: 'male',
+    },
+    {
+        id: 4,
+        name: 'kids',
+    },
+]
+
+export const category_data = [
+    {
+        id: 1,
+        image: <Category1 width={24} height={24} />,
+        name: 'Clothing',
+        content: [
+            {
+                id: 1,
+                content1: "Dresses",
+                content2: "Pants",
+                content3: "Skirts",
+                content4: "Shorts",
+                content5: "Jackets",
+                content6: "Hoodies",
+                content7: "Shirts",
+                content8: "Polo",
+                content9: 'T-Shirts',
+                content10: 'Tunics',
+            }
+        ]
+    },
+    {
+        id: 2,
+        image: <Category2 width={24} height={24} />,
+        name: 'Shoes',
+        content: [
+            {
+                id: 1,
+                content1: "Dresses",
+                content2: "Pants",
+                content3: "Skirts",
+                content4: "Shorts",
+                content5: "Jackets",
+                content6: "Hoodies",
+                content7: "Shirts",
+                content8: "Polo",
+                content9: 'T-Shirts',
+                content10: 'Tunics',
+            }
+        ]
+    },
+    {
+        id: 3,
+        image: <Category3 width={24} height={24} />,
+        name: 'Bags',
+        content: [
+            {
+                id: 1,
+                content1: "Dresses",
+                content2: "Pants",
+                content3: "Skirts",
+                content4: "Shorts",
+                content5: "Jackets",
+                content6: "Hoodies",
+                content7: "Shirts",
+                content8: "Polo",
+                content9: 'T-Shirts',
+                content10: 'Tunics',
+            }
+        ]
+    },
+    {
+        id: 4,
+        image: <Category4 width={24} height={24} />,
+        name: 'Lingerie',
+        content: [
+            {
+                id: 1,
+                content1: "Dresses",
+                content2: "Pants",
+                content3: "Skirts",
+                content4: "Shorts",
+                content5: "Jackets",
+                content6: "Hoodies",
+                content7: "Shirts",
+                content8: "Polo",
+                content9: 'T-Shirts',
+                content10: 'Tunics',
+            }
+        ]
+    },
+    {
+        id: 5,
+        image: <Category5 width={24} height={24} />,
+        name: 'Accessories',
+        content: [
+            {
+                id: 1,
+                content1: "Dresses",
+                content2: "Pants",
+                content3: "Skirts",
+                content4: "Shorts",
+                content5: "Jackets",
+                content6: "Hoodies",
+                content7: "Shirts",
+                content8: "Polo",
+                content9: 'T-Shirts',
+                content10: 'Tunics',
+            }
+        ]
+    },
+];
+
+export const notification_data = [
+    {
+        id: 1,
+        image: <NotOpened />,
+        text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con',
+    },
+    {
+        id: 2,
+        image: <NotOpened />,
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu',
+    },
+    {
+        id: 3,
+        image: <NotOpened />,
+        text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con',
+    },
+    {
+        id: 4,
+        image: <NotOpened />,
+        text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to',
+    },
+    {
+        id: 5,
+        image: <Opened />,
+        text: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur ma',
+    },
+    {
+        id: 6,
+        image: <NotOpened />,
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu',
+    },
+    {
+        id: 7,
+        image: <Opened />,
+        text: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatu',
+    },
+
+]
+
+
+export const profile_data = [
+    {
+        id: 1,
+        icon: <Profile_icon1 />,
+        name: 'My Orders',
+    },
+    {
+        id: 2,
+        icon: <Profile_icon2 />,
+        name: 'Payments Methods',
+    },
+]
+
+export const profile_data2 = [
+    {
+        id: 1,
+        icon: <Profile_icon3 />,
+        name: 'Notifications',
+    },
+    {
+        id: 2,
+        icon: <Profile_icon4 />,
+        name: 'Dark mode',
+    },
+]
+
+export const profile_data3 = [
+    {
+        id: 1,
+        icon: <Profile_icon5 />,
+        name: 'Support',
+    },
+    {
+        id: 2,
+        icon: <Profile_icon6 />,
+        name: 'Logout',
+    },
+]
+
+
+export const ordered_data = [
+    {
+        id: 1,
+        name: 'Order  #0D6765',
+        items: '4 items',
+    },
+    {
+        id: 2,
+        name: 'Order  #0D6765',
+        items: '7 items',
+    },
+]
+
+export const ordered_data2 = [
+    {
+        id: 1,
+        name: 'Order  #0D6765',
+        items: '18 items',
+    },
+    {
+        id: 2,
+        name: 'Order  #0D6765',
+        items: '2 items',
+    },
 ]
