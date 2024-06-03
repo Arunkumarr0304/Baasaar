@@ -77,6 +77,12 @@ import Profile_icon3 from "../assets/images/profile_icon3.svg";
 import Profile_icon4 from "../assets/images/profile_icon4.svg";
 import Profile_icon5 from "../assets/images/profile_icon5.svg";
 import Profile_icon6 from "../assets/images/profile_icon6.svg";
+import Dark_Profile_icon1 from "../assets/images/dark_profile_icon1.svg";
+import Dark_Profile_icon2 from "../assets/images/dark_profile_icon2.svg";
+import Dark_Profile_icon3 from "../assets/images/dark_profile_icon3.svg";
+import Dark_Profile_icon4 from "../assets/images/dark_profile_icon4.svg";
+import Dark_Profile_icon5 from "../assets/images/dark_profile_icon5.svg";
+import Dark_Profile_icon6 from "../assets/images/dark_profile_icon6.svg";
 
 import Tick from "../assets/images/tick.svg";
 import Red_Tick from "../assets/images/red-tick.svg";
@@ -758,11 +764,13 @@ export const profile_data = [
     {
         id: 1,
         icon: <Profile_icon1 />,
+        Dark_icon: <Dark_Profile_icon1 />,
         name: 'My Orders',
     },
     {
         id: 2,
         icon: <Profile_icon2 />,
+        Dark_icon: <Dark_Profile_icon2 />,
         name: 'Payments Methods',
     },
 ]
@@ -771,11 +779,13 @@ export const profile_data2 = [
     {
         id: 1,
         icon: <Profile_icon3 />,
+        Dark_icon: <Dark_Profile_icon3 />,
         name: 'Notifications',
     },
     {
         id: 2,
         icon: <Profile_icon4 />,
+        Dark_icon: <Dark_Profile_icon4 />,
         name: 'Dark mode',
     },
 ]
@@ -784,11 +794,13 @@ export const profile_data3 = [
     {
         id: 1,
         icon: <Profile_icon5 />,
+        Dark_icon: <Dark_Profile_icon5 />,
         name: 'Support',
     },
     {
         id: 2,
         icon: <Profile_icon6 />,
+        Dark_icon: <Dark_Profile_icon6 />,
         name: 'Logout',
     },
 ]

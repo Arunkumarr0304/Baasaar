@@ -1,15 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Back from "../../assets/images/back.svg";
 import Notification from "../../assets/images/notification.svg";
+import Dark_Notify from "../../assets/images/dark_notification.svg";
 import Details from "../../assets/images/details_img.svg";
 import Star from "../../assets/images/Big_star";
 import { circle_data2, details_review } from '../../components/Data';
 import Button from "../../components/Button/Button";
 import Cart from "../../assets/images/Buy_cart.svg";
 import {Redirect, router} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const ProductDetails = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [activeColor, setActiveColor] = useState(circle_data2[0].id);
   const [activeHeading, setActiveHeading] = useState(details_review[0].id);
 
@@ -20,15 +23,20 @@ const ProductDetails = () => {
   const goback = () =>{
     router.push('home');
   }
+  const notification = () => {
+    router.push('notification');
+  }
 
   return (
-    <View style={styles.details_page}>
+    <View style={[styles.details_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
         <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}>Smart Watch</Text>
-        <Notification />
+        <Text style={[styles.heading, {color: theme.color}]}>Smart Watch</Text>
+        <TouchableOpacity style={styles.image_box} onPress={notification}>
+        {darkMode ? <Dark_Notify /> : <Notification />}
+        </TouchableOpacity>
       </View>
       <ScrollView style={styles.scroll_view} showsVerticalScrollIndicator={false}>
         <View style={styles.details_content}>
@@ -36,14 +44,14 @@ const ProductDetails = () => {
             <Details />
           </View>
           <View style={styles.name_flex}>
-            <Text style={styles.name}>Apple Watch SE Gen 2</Text>
+            <Text style={[styles.name, {color: theme.color}]}>Apple Watch SE Gen 2</Text>
             <View style={styles.rating_box}>
               <Star />
               <Text style={styles.rating}>4.9</Text>
             </View>
           </View>
-          <Text style={styles.brand}>( With solo loop )</Text>
-          <Text style={styles.color_head}>Colors</Text>
+          <Text style={[styles.brand, {color: theme.text}]}>( With solo loop )</Text>
+          <Text style={[styles.color_head, {color: theme.text}]}>Colors</Text>
           <View style={styles.circle_box_container}>
             {circle_data2.map((circle) => (
               <TouchableOpacity
@@ -60,7 +68,7 @@ const ProductDetails = () => {
                     { backgroundColor: circle.backgroundColor }
                   ]}
                 />
-                <Text style={styles.color_text}>{circle.text}</Text>
+                <Text style={[styles.color_text, {color: theme.text}]}>{circle.text}</Text>
               </TouchableOpacity>
             ))}
           </View>

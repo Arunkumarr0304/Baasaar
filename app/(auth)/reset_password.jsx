@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, ActivityIndicator } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
 import { Redirect, router, useRouter } from "expo-router";
 import Success from "../../assets/images/successful.svg";
 import { useFonts, Kalam_400Regular, Kalam_700Bold } from '@expo-google-fonts/kalam';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Reset = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -48,14 +50,14 @@ const Reset = () => {
   }
 
   return (
-    <View style={styles.reset_page}>
+    <View style={[styles.reset_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Text style={styles.heading}>Reset <Text style={styles.red}>Password</Text></Text>
-        <Text style={styles.header_text}>Enter your new password, Remember this time!</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>Reset <Text style={styles.red}>Password</Text></Text>
+        <Text style={[styles.header_text, {color: theme.text}]}>Enter your new password, Remember this time!</Text>
       </View>
       <View style={styles.input_container}>
         <View style={styles.name_input}>
-          <Text style={styles.label}>old Password</Text>
+          <Text style={[styles.label, {color: theme.text}]}>old Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible}
@@ -72,7 +74,7 @@ const Reset = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.name_input}>
-          <Text style={styles.label}>Password</Text>
+          <Text style={[styles.label, {color: theme.text}]}>Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible1}
@@ -92,7 +94,7 @@ const Reset = () => {
       <View style={styles.button_box}>
         <Button buttonText="continue" onPress={handleConfirm} />
       </View>
-      <Text style={styles.terms_condition}>By continuing, you agree to Baasaar <Text style={styles.terms}>Terms and Conditions
+      <Text style={[styles.terms_condition, {color: theme.text}]}>By continuing, you agree to Baasaar <Text style={styles.terms}>Terms and Conditions
         Use</Text> and<Text style={styles.terms}> Privacy Policy.</Text></Text>
 
       <Modal

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
@@ -12,8 +12,10 @@ import Paycheck from '../../components/paycheck/Paycheck';
 import Button from '../../components/Button/Button';
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Checkout = () => {
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [isSelected, setSelection] = useState(false);
     const [selectedMethod, setSelectedMethod] = useState(null);
 
@@ -46,12 +48,12 @@ const Checkout = () => {
     );
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>Checkout</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>Checkout</Text>
             </View>
             <View style={styles.row}>
                 <Location />
@@ -61,11 +63,11 @@ const Checkout = () => {
                 <Tick />
             </View>
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false} >
-                <Text style={styles.shipping}>Shipping</Text>
+                <Text style={[styles.shipping, {color: theme.color}]}>Shipping</Text>
                 <View style={styles.inputs_container}>
                     {['First Name', 'Last Name', 'Street Name', 'City', 'State', 'ZIP Code', 'Phone Number'].map((label, index) => (
                         <View style={styles.name_input} key={index}>
-                            <Text style={styles.label}>{label}</Text>
+                            <Text style={[styles.label, {color: theme.text}]}>{label}</Text>
                             <TextInput
                                 style={styles.input}
                                 autoCapitalize="none"
@@ -76,11 +78,11 @@ const Checkout = () => {
                         </View>
                     ))}
                     <View style={styles.name_input}>
-                        <Text style={styles.label2}>Country</Text>
+                        <Text style={[styles.label2, {color: theme.text}]}>Country</Text>
                         <CountryDropdown />
                     </View>
                 </View>
-                <Text style={styles.method}>Shipping method</Text>
+                <Text style={[styles.method, {color: theme.color}]}>Shipping method</Text>
                 <View style={styles.shipping_container}>
                     {shipping_method.map((d) => (
                         <View style={styles.checkmethod_box} key={d.id}>
@@ -90,18 +92,18 @@ const Checkout = () => {
                             />
                             <View style={styles.checkout_container}>
                                 <View style={styles.top_content}>
-                                    <Text style={styles.left_content}>{d.method}</Text>
-                                    <Text style={styles.right_content}>{d.to}</Text>
+                                    <Text style={[styles.left_content, {color: theme.text}]}>{d.method}</Text>
+                                    <Text style={[styles.right_content, {color: theme.text}]}>{d.to}</Text>
                                 </View>
-                                <Text style={styles.timing}>{d.time}</Text>
+                                <Text style={[styles.timing, {color: theme.color}]}>{d.time}</Text>
                             </View>
                         </View>
                     ))}
                 </View>
-                <Text style={styles.billing}>Billing Address</Text>
+                <Text style={[styles.billing, {color: theme.text}]}>Billing Address</Text>
                 <View style={styles.billing_check}>
                     <Checkbox checked={isSelected} onPress={toggleCheckbox} />
-                    <Text style={styles.bill}>Copy address data from shipping</Text>
+                    <Text style={[styles.bill, {color: theme.text}]}>Copy address data from shipping</Text>
                 </View>
                 <Button buttonText="Continue" onPress={payment} />
             </ScrollView>

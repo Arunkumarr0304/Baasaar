@@ -1,20 +1,22 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
 import { wishlist_data } from '../../components/Data';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Wishlist = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const goback = () => {
     router.push('home');
 };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
        <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>Wishlist</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>Wishlist</Text>
             </View>
             <View style={styles.list_container}>
               {
@@ -22,8 +24,8 @@ const Wishlist = () => {
                   <View style={styles.list_box} key={d.id}>
                   {d.image}
                   <View style={styles.card_body}>
-                    <Text style={styles.list_heading}>{d.heading}</Text>
-                    <Text style={styles.about_text}>{d.text}</Text>
+                    <Text style={[styles.list_heading, {color: theme.color}]}>{d.heading}</Text>
+                    <Text style={[styles.about_text, {color: theme.text}]}>{d.text}</Text>
                     <Text style={styles.price}>{d.price}</Text>
                   </View>
                   </View>

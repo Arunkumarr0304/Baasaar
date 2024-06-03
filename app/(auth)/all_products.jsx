@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import Filter from "../../assets/images/Filter.svg";
 import { products_data } from '../../components/Data';
 import Star from "../../assets/images/small_star";
 import { router } from 'expo-router';
+import ThemeContext from '../../theme/ThemeContext';
 
 const All_products = () => {
 
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('home');
       }
@@ -15,29 +17,29 @@ const All_products = () => {
         router.push('product_details');
       }
   return (
-    <View style={styles.all_products_page}>
+    <View style={[styles.all_products_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <View style={styles.left_content}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-          <Text style={styles.heading}>all products</Text>
+          <Text style={[styles.heading, {color: theme.color}]}>all products</Text>
         </View>
         <View style={styles.filter_box}>
           <Filter />
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.results}>Found 152 Results</Text>
+        <Text style={[styles.results, {color: theme.text}]}>Found 152 Results</Text>
         <View style={styles.products_container}>
           {products_data.map((d) => (
-            <TouchableOpacity style={styles.product_box} key={d.id} onPress={details}>
+            <TouchableOpacity style={[styles.product_box, {backgroundColor: theme.cardbg}]} key={d.id} onPress={details}>
               <View style={styles.image_box}>
                 {d.image}
               </View>
               <View style={styles.box_body}>
                 <View style={styles.name_flex}>
-                  <Text style={styles.name}>{d.Name}</Text>
+                  <Text style={[styles.name, {color: theme.color}]}>{d.Name}</Text>
                   <View style={styles.rating_box}>
                     <Star />
                     <Text style={styles.rating}>{d.rating}</Text>
@@ -45,7 +47,7 @@ const All_products = () => {
                 </View>
                 <Text style={styles.brand}>{d.brand}</Text>
                 <View style={styles.price_row}>
-                  <Text style={styles.dashed}>{d.dashed}</Text>
+                  <Text style={[styles.dashed, {color: theme.color}]}>{d.dashed}</Text>
                   <Text style={styles.price}>{d.price}</Text>
                 </View>
               </View>
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: '600',
     color: '#4C4C4C',
-    marginTop: 25,
+    marginVertical: 25,
     paddingLeft: 5,
   },
   products_container: {

@@ -1,53 +1,55 @@
 import { StyleSheet, Text, View,  TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { details_data2 } from '../../components/Data';
 import { router } from 'expo-router';
 import Line from "../../assets/images/vertical_line.svg";
 import Cart2 from "../../assets/images/cart_img2.svg";
 import Van from "../../assets/images/van.svg";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Track = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('order_details');
     };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
     <View style={styles.header}>
       <TouchableOpacity onPress={goback}>
         <Back />
       </TouchableOpacity>
-      <Text style={styles.heading}>Track Order</Text>
+      <Text style={[styles.heading, {color: theme.color}]}>Track Order</Text>
     </View>
-    <View style={styles.details_container}>
+    <View style={[styles.details_container, {backgroundColor: theme.cardbg}]}>
         {
           details_data2.map((d) => (
             <View style={styles.row} key={d.id}>
                 <View style={styles.row_header}>
                     {d.icon}
-              <Text style={styles.row_heading}>{d.heading}</Text>
+              <Text style={[styles.row_heading, {color: theme.color}]}>{d.heading}</Text>
               </View>
-              <Text style={styles.row_value}>{d.value}</Text>
+              <Text style={[styles.row_value, {color: theme.color}]}>{d.value}</Text>
             </View>
           ))
         }
     </View>
     <View style={styles.stack_container}>
-          <View style={styles.stack_box}>
+          <View style={[styles.stack_box, {backgroundColor: theme.cardbg}]}>
             <Cart2 />
             <View style={styles.details}>
-              <Text style={styles.name}>Long Sleeve Dress</Text>
+              <Text style={[styles.name, {color: theme.color}]}>Long Sleeve Dress</Text>
               <View style={styles.optional_row}>
-                <Text style={styles.option}>Size:</Text>
-                <Text style={styles.option}>XL</Text>
+                <Text style={[styles.option, {color: theme.color}]}>Size:</Text>
+                <Text style={[styles.option, {color: theme.color}]}>XL</Text>
               </View>
               <View style={styles.main_row}>
                 <View>
               <Text style={styles.delivery}>Free Delivery</Text>
               
               <View style={styles.price_row}>
-                <Text style={styles.dashed}>$280</Text>
-                <Text style={styles.price}>/ $200</Text>
+                <Text style={[styles.dashed, {color: theme.color}]}>$280</Text>
+                <Text style={[styles.price, {color: theme.color}]}>/ $200</Text>
               </View>
               </View>
               <Van />

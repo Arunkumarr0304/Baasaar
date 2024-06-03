@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { forget_data } from '../../components/Data';
 import CheckCircle from '../../components/Check_Circle/Check_Circle';
 import Button from '../../components/Button/Button';
 import { useNavigation } from '@react-navigation/native';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Forget = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const navigation = useNavigation();
   const [activeBox, setActiveBox] = useState(forget_data[0]?.id || null);
 
@@ -17,10 +19,10 @@ const Forget = () => {
       navigation.navigate('verification');
   }
   return (
-    <View style={styles.forget_password_page}>
+    <View style={[styles.forget_password_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-            <Text style={styles.heading}>Forgot <Text style={styles.red}>Password</Text></Text>
-            <Text style={styles.header_text}>Enter your Email then we will send you OTP to reset new password.</Text>
+            <Text style={[styles.heading, {color: theme.color}]}>Forgot <Text style={styles.red}>Password</Text></Text>
+            <Text style={[styles.header_text, {color: theme.text}]}>Enter your Email then we will send you OTP to reset new password.</Text>
         </View>
 
         <View style={styles.stackContainer}>
@@ -44,11 +46,11 @@ const Forget = () => {
               </TouchableOpacity>
             ))}
           </View>
-          <Text style={styles.help}>Need Help ?</Text>
+          <Text style={[styles.help, {color: theme.text}]}>Need Help ?</Text>
           <View style={styles.button_box}>
             <Button buttonText="confirm" onPress={confirm} />
           </View>
-          <Text style={styles.terms_condition}>By continuing, you agree to Baasaar <Text style={styles.terms}>Terms and Conditions
+          <Text style={[styles.terms_condition, {color: theme.text}]}>By continuing, you agree to Baasaar <Text style={styles.terms}>Terms and Conditions
 Use</Text> and<Text style={styles.terms}> Privacy Policy.</Text></Text>
     </View>
   )

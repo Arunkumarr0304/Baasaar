@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import LanguageDropdown from '../../components/LanguageDropdown/LanguageDropdown'; // Ensure this path is correct
 import Button from '../../components/Button/Button';
 import {Link} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Register = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const togglePasswordVisibility = () => {
@@ -16,19 +18,19 @@ const Register = () => {
     setPasswordVisible1(!passwordVisible1);
   };
   return (
-    <View style={styles.register_page}>
+    <View style={[styles.register_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Text style={styles.heading}>Register<Text style={styles.red}> Account</Text></Text>
-        <Text style={styles.header_text}>Hello there, please login first 👋</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>Register<Text style={styles.red}> Account</Text></Text>
+        <Text style={[styles.header_text, {color: theme.text}]}>Hello there, please login first 👋</Text>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.input_container}>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Language</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Language</Text>
             <LanguageDropdown />
           </View>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Name</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Name</Text>
             <TextInput
               style={styles.input}
               autoCapitalize="none"
@@ -36,21 +38,21 @@ const Register = () => {
             />
           </View>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Email</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Email</Text>
             <TextInput
               style={styles.input}
               keyboardType="email-address"
             />
           </View>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Mobile Number</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Mobile Number</Text>
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
             />
           </View>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Password</Text>
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible}
@@ -67,7 +69,7 @@ const Register = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.name_input}>
-            <Text style={styles.label}>Password</Text>
+            <Text style={[styles.label, {color: theme.text}]}>Password</Text>
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible1}
@@ -87,7 +89,7 @@ const Register = () => {
         <View style={styles.button_box}>
             <Button buttonText="create" />
         </View>
-        <Text style={styles.bottom_text}>Already have an account? <Link style={styles.register} href="/login"> Login</Link></Text>
+        <Text style={[styles.bottom_text, {color: theme.text}]}>Already have an account? <Link style={styles.register} href="/login"> Login</Link></Text>
       </ScrollView>
     </View>
   );
@@ -104,7 +106,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 50,
     paddingBottom: 20,
-    backgroundColor: '#ffffff',
   },
   scrollContent: {
     flexGrow: 1,

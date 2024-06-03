@@ -1,30 +1,31 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import { notification_data } from '../../components/Data';
-
+import ThemeContext from '../../theme/ThemeContext';
+import Dark_notify from '../../assets/images/dark_notification.svg';
 
 const Notification = () => {
-    
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('home');
     };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
         <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>Notification</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>Notification</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.tab_container}>
                 {
                     notification_data.map((d) => (
-                        <TouchableOpacity style={styles.tab} key={d.id}>
-                            {d.image}
-                            <Text style={styles.tab_text}>{d.text}</Text>
+                        <TouchableOpacity style={[styles.tab, {backgroundColor: theme.cardbg}]} key={d.id}>
+                            { darkMode ? <Dark_notify /> : d.image}
+                            <Text style={[styles.tab_text, {color: theme.color}]}>{d.text}</Text>
                         </TouchableOpacity>
                     ))
                 }

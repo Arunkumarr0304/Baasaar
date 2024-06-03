@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Back from "../../assets/images/back.svg";
 import Filter from "../../assets/images/Filter.svg";
@@ -9,8 +9,10 @@ import Close from "../../assets/images/Close.svg";
 import { feature_data } from '../../components/Data';
 import { router } from 'expo-router';
 import Filters from '../../components/Filter_content/Filter_content';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Search = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [sessionSearchHistory, setSessionSearchHistory] = useState([]);
@@ -91,7 +93,7 @@ const Search = () => {
   };
 
   return (
-    <View style={styles.search_page}>
+    <View style={[styles.search_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
@@ -112,7 +114,7 @@ const Search = () => {
       </View>
       <ScrollView>
         <View style={styles.recent}>
-          <Text style={styles.recent_head}>Recent Search</Text>
+          <Text style={[styles.recent_head, {color: theme.color}]}>Recent Search</Text>
           <Trash />
         </View>
         <View style={styles.searchHistory}>
@@ -126,15 +128,15 @@ const Search = () => {
           ))}
         </View>
         <View style={styles.Popular}>
-          <Text style={styles.recent_head}>Popular this week</Text>
-          <Text style={styles.show}>Show all</Text>
+          <Text style={[styles.recent_head, {color: theme.color}]}>Popular this week</Text>
+          <Text style={[styles.show, {color: theme.text}]}>Show all</Text>
         </View>
         <ScrollView horizontal={true} style={styles.featureContainer}>
           {filteredFeatures.map((d) => (
             <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details} >
               {d.image}
               <View style={styles.box_body}>
-                <Text style={styles.box_heading}>{d.heading}</Text>
+                <Text style={[styles.box_heading, {color: theme.text}]}>{d.heading}</Text>
                 <Text style={styles.price}>${d.price}</Text>
               </View>
             </TouchableOpacity>
@@ -149,7 +151,7 @@ const Search = () => {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
+          <View style={[styles.modalContainer, {backgroundColor: theme.cardbg}]}>
             
             <TouchableOpacity onPress={() => setModalVisible(false)}>
               

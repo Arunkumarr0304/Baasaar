@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
 import { login_items } from '../../components/Data';
 import {Link} from "expo-router";
 import {Redirect, router} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Login = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const login = () => {
@@ -19,22 +21,22 @@ const Login = () => {
       };
     
   return (
-    <View style={styles.login_page}>
+    <View style={[styles.login_page, {backgroundColor: theme.background}]}>
         <View style={styles.header}>
-            <Text style={styles.heading}>Welcome <Text style={styles.red}>Back!</Text></Text>
-            <Text style={styles.header_text}>Hello there, please login first 👋</Text>
+            <Text style={[styles.heading, {color: theme.color}]}>Welcome <Text style={styles.red}>Back!</Text></Text>
+            <Text style={[styles.header_text, {color: theme.text}]}>Hello there, please login first 👋</Text>
         </View>
         <View style={styles.input_container}>
             <View style={styles.name_input}>
-              <Text style={styles.label}>Email/Phone</Text>
+              <Text style={[styles.label, {color: theme.text}]}>Email/Phone</Text>
               <TextInput
-                style={styles.input}
+                style={[styles.input]}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
             </View>
             <View style={styles.name_input}>
-              <Text style={styles.label}>Password</Text>
+              <Text style={[styles.label, {color: theme.text}]}>Password</Text>
               <TextInput
                 style={[styles.password_input, styles.passwordInput]}
                 secureTextEntry={!passwordVisible}
@@ -65,7 +67,7 @@ const Login = () => {
                 }
             </View>
           </View>
-          <Text style={styles.bottom_text}>Don’t have an account yet? <Link style={styles.register} href="/register"> Register</Link></Text>
+          <Text style={[styles.bottom_text, {color: theme.color}]}>Don’t have an account yet? <Link style={styles.register} href="/register"> Register</Link></Text>
     </View>
   )
 }

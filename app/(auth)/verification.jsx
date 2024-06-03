@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Button from '../../components/Button/Button';
 import { useNavigation } from '@react-navigation/native';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Verification = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const navigation = useNavigation();
   const [otp, setOtp] = useState(['', '', '', '']);
   const [timer, setTimer] = useState(110); 
@@ -58,14 +60,14 @@ const Verification = () => {
   };
 
   return (
-    <View style={styles.Verification_page}>
+    <View style={[styles.Verification_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Text style={styles.heading}>OTP <Text style={styles.red}>Verification</Text></Text>
-        <Text style={styles.header_text}>Please check your email/phone to see the verification code 📨</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>OTP <Text style={styles.red}>Verification</Text></Text>
+        <Text style={[styles.header_text, {color: theme.text}]}>Please check your email/phone to see the verification code 📨</Text>
       </View>
 
       <View style={styles.name_input}>
-        <Text style={styles.label}>OTP code</Text>
+        <Text style={[styles.label, {color: theme.text}]}>OTP code</Text>
         <View style={styles.otp_block}>
           {otp.map((digit, index) => (
             <TextInput
@@ -83,12 +85,12 @@ const Verification = () => {
       </View>
       <Button buttonText="Verify" onPress={confirm} />
       <View style={styles.resend_timer}>
-        <Text style={styles.resend}>Resend code in</Text>
+        <Text style={[styles.resend, {color: theme.text}]}>Resend code in</Text>
         <View style={styles.timer_container}>
           <Text style={styles.timer}>{formatTimer(timer)}</Text>
         </View>
       </View>
-      <Text style={styles.terms_condition}>Wrong email address? <Text style={styles.terms}>Change Email</Text></Text>
+      <Text style={[styles.terms_condition, {color: theme.text}]}>Wrong email address? <Text style={styles.terms}>Change Email</Text></Text>
     </View>
   );
 };

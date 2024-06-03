@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import Location from "../../assets/images/red_location.svg";
@@ -9,18 +9,23 @@ import Pay from "../../assets/images/red-pay.svg";
 import Tick from "../../assets/images/red-tick.svg";
 import Confirm from "../../assets/images/confirm_tick.svg";
 import Button from '../../components/Button/Button';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Order = () => {
+    const continues = () => {
+        router.push('home');
+    }
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('payment');
     };
   return (
-    <View style={styles.order_page}>
+    <View style={[styles.order_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>Order Confirm</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>Order Confirm</Text>
             </View>
             <View style={styles.row}>
                 <Location />
@@ -31,11 +36,11 @@ const Order = () => {
             </View>
             <View style={styles.Content}>
                 <Confirm />
-                <Text style={styles.Complete}>Order Completed</Text>
-                <Text style={styles.complete_text}>Thank you for your purchase.
+                <Text style={[styles.Complete, {color: theme.color}]}>Order Completed</Text>
+                <Text style={[styles.complete_text, {color: theme.text}]}>Thank you for your purchase.
         You can view your order in ‘My Orders’ section.</Text>
             </View>
-            <Button buttonText="Continue Shopping" />
+            <Button buttonText="Continue Shopping" onPress={continues} />
     </View>
   )
 }

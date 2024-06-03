@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
@@ -8,11 +8,17 @@ import Arrow from "../../assets/images/profile_arrow.svg";
 import { profile_data, profile_data2, profile_data3 } from '../../components/Data';
 import CustomSwitch from '../../components/Switch/Custom_switch';
 import Logout from "../../assets/images/logout.svg";
+import ThemeContext from "../../theme/ThemeContext";
 
 const Profile = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [isEnabled, setIsEnabled] = useState(false);
-  const [isEnabled2, setIsEnabled2] = useState(false);
+  const [isEnabled2, setIsEnabled2] = useState(darkMode);
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    setIsEnabled2(darkMode);
+  }, [darkMode]);
 
   const edit = () => {
     router.push('my_profile');
@@ -28,19 +34,22 @@ const Profile = () => {
   };
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
+  const toggleSwitch2 = () => {
+    setIsEnabled2(previousState => !previousState);
+    toggleTheme();
+  };
 
   const handleLogoutPress = () => {
     setModalVisible(true);
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}>profile</Text>
+        <Text style={[styles.heading, { color: theme.color }]}>profile</Text>
       </View>
       <View style={styles.profile_container}>
         <TouchableOpacity style={styles.profile}>
@@ -52,12 +61,12 @@ const Profile = () => {
       </View>
       <View style={styles.edit_row}>
         <View style={styles.profile_content}>
-          <Text style={styles.name}>Minato Namikaza</Text>
-          <Text style={styles.email}>minatnami@gmail.com</Text>
-          <Text style={styles.number}>(208) 555-0112</Text>
+          <Text style={[styles.name, { color: theme.color }]}>Minato Namikaza</Text>
+          <Text style={[styles.email, { color: theme.text }]}>minatnami@gmail.com</Text>
+          <Text style={[styles.number, { color: theme.text }]}> (208) 555-0112</Text>
         </View>
         <TouchableOpacity style={styles.edit_box} onPress={edit}>
-          <Text style={styles.edit}>edit</Text>
+          <Text style={[styles.edit, { color: theme.color }]}>edit</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.profile_lines}>
@@ -68,8 +77,8 @@ const Profile = () => {
             onPress={d.name === 'My Orders' ? order : d.name === 'Payments Methods' ? method : null}
           >
             <View style={styles.left_line}>
-              {d.icon}
-              <Text style={styles.line_text}>{d.name}</Text>
+              {darkMode ? d.Dark_icon : d.icon}
+              <Text style={[styles.line_text, { color: theme.text }]}>{d.name}</Text>
             </View>
             <Arrow />
           </TouchableOpacity>
@@ -79,8 +88,8 @@ const Profile = () => {
         {profile_data2.map((d) => (
           <TouchableOpacity style={styles.line_box} key={d.id}>
             <View style={styles.left_line}>
-              {d.icon}
-              <Text style={styles.line_text}>{d.name}</Text>
+            {darkMode ? d.Dark_icon : d.icon}
+              <Text style={[styles.line_text, { color: theme.text }]}>{d.name}</Text>
             </View>
             {d.id === 1 ? (
               <CustomSwitch isEnabled={isEnabled} toggleSwitch={toggleSwitch} />
@@ -98,8 +107,8 @@ const Profile = () => {
             onPress={d.name === 'Logout' ? handleLogoutPress : null}
           >
             <View style={styles.left_line}>
-              {d.icon}
-              <Text style={styles.line_text}>{d.name}</Text>
+            {darkMode ? d.Dark_icon : d.icon}
+              <Text style={[styles.line_text, { color: theme.text }]}>{d.name}</Text>
             </View>
             <Arrow />
           </TouchableOpacity>
@@ -149,7 +158,6 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
     paddingTop: 30,
     paddingHorizontal: 20,
   },
@@ -163,7 +171,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 29,
     fontWeight: '700',
-    color: '#151515',
     marginLeft: 20,
     textTransform: 'capitalize',
   },
@@ -193,20 +200,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     fontWeight: '600',
-    color: '#151515',
     textTransform: 'capitalize',
   },
   email: {
     fontSize: 12,
     lineHeight: 20,
     fontWeight: '500',
-    color: '#4C4C4C',
   },
   number: {
     fontSize: 12,
     lineHeight: 19,
     fontWeight: '500',
-    color: '#4C4C4C',
   },
   edit_box: {
     borderRadius: 5,
@@ -218,8 +222,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 19,
     fontWeight: '600',
-    color: '#ffffff',
     textTransform: 'capitalize',
+    color: '#ffffff',
   },
   profile_lines: {
     gap: 20,
@@ -245,7 +249,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 24,
     fontWeight: '500',
-    color: '#4C4C4C',
   },
   modal_overlay: {
     flex: 1,
@@ -308,4 +311,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-

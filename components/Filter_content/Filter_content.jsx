@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Filter from "../../assets/images/Filter.svg";
+import Dark_filter from "../../assets/images/dark_filter.svg";
 import PriceSlider from '../Price_Slider/Price_Slider';
 import { circle_data, circledata2, discount_data } from '../Data';
 import Dress from "../../assets/images/Dress.svg";
 import Drop from "../../assets/images/category_drop_down.svg";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Filters = () => {
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [activeStar, setActiveStar] = useState(circledata2[1].id);
     const [selectedCategory, setSelectedCategory] = useState('Crop Tops');
     const [showCategoryOptions, setShowCategoryOptions] = useState(false);
@@ -32,18 +35,18 @@ const Filters = () => {
     return (
         <View style={styles.filter_content}>
             <View style={styles.header}>
-                <Text style={styles.heading}>Filter</Text>
-                <Filter />
+                <Text style={[styles.heading, {color: theme.color}]}>Filter</Text>
+              { darkMode ? <Dark_filter /> : <Filter />}
             </View>
-            <Text style={styles.price}>Price</Text>
+            <Text style={[styles.price, {color: theme.color}]}>Price</Text>
             <PriceSlider />
-            <Text style={styles.price}>Colors</Text>
+            <Text style={[styles.price, {color: theme.color}]}>Colors</Text>
             <View style={styles.circle_container}>
                 {circle_data.map((circle) => (
                     <TouchableOpacity key={circle.id} style={[styles.circle, { backgroundColor: circle.backgroundColor }]} />
                 ))}
             </View>
-            <Text style={styles.price}>Star Rating</Text>
+            <Text style={[styles.price, {color: theme.color}]}>Star Rating</Text>
             <View style={styles.star_circle_container}>
                 {circledata2.map((item) => (
                     <TouchableOpacity
@@ -58,15 +61,15 @@ const Filters = () => {
                         onPress={() => handleStarPress(item.id)}
                     >
                         {activeStar === item.id ? item.White_Star : item.star}
-                        <Text style={[styles.rating, activeStar === item.id && { color: 'white' }]}>
+                        <Text style={[styles.rating, activeStar === item.id && { color: 'white' },]}>
                             {item.number}
                         </Text>
                     </TouchableOpacity>
                 ))}
             </View>
-            <Text style={styles.price}>Category</Text>
+            <Text style={[styles.price, {color: theme.color}]}>Category</Text>
             <TouchableOpacity style={styles.categoryDropdown} onPress={toggleCategoryOptions}>
-                <Text style={styles.selectedCategory}>
+                <Text style={[styles.selectedCategory, {color: theme.color}]}>
                     {selectedCategory ? selectedCategory : 'Select category'}
                 </Text>
                 <View style={styles.image_box1}>
@@ -89,13 +92,13 @@ const Filters = () => {
                     </TouchableOpacity>
                 </View>
             )}
-            <Text style={styles.price}>Discount</Text>
+            <Text style={[styles.price, {color: theme.color}]}>Discount</Text>
             <View style={styles.discount_container}>
                 {discounts.map((d) => (
                     <View style={styles.discount_stack} key={d.id}>
-                        <Text style={styles.discount_text}>{d.offer}</Text>
+                        <Text style={[styles.discount_text, {color: theme.color}]}>{d.offer}</Text>
                         <TouchableOpacity onPress={() => removeDiscount(d.id)} style={styles.closeButton}>
-                            <Text style={styles.closeButtonText}>X</Text>
+                            <Text style={[styles.closeButtonText, {color: theme.color}]}>X</Text>
                         </TouchableOpacity>
                     </View>
                 ))}

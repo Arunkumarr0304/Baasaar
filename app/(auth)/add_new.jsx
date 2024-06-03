@@ -1,21 +1,23 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import Card from "../../assets/images/card3.svg";
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const Add_new = () => {
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('payment');
     }
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>Add New Card</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>Add New Card</Text>
             </View>
             <ScrollView>
             <View style={styles.card}>
@@ -36,7 +38,7 @@ const Add_new = () => {
             </View>
             <View style={styles.input_container}>
                 <View style={styles.name_input}>
-                    <Text style={styles.label}>Cardholder Name</Text>
+                    <Text style={[styles.label, {color: theme.color}]}>Cardholder Name</Text>
                     <TextInput
                         style={styles.input}
                         autoCapitalize="none"
@@ -44,7 +46,7 @@ const Add_new = () => {
                     />
                 </View>
                 <View style={styles.name_input}>
-                    <Text style={styles.label}>Card Number</Text>
+                    <Text style={[styles.label, {color: theme.color}]}>Card Number</Text>
                     <TextInput
                         style={styles.input}
                         keyboardType="phone-pad"
@@ -52,14 +54,14 @@ const Add_new = () => {
                 </View>
                 <View style={styles.input_row}>
                 <View style={styles.name_input}>
-                    <Text style={styles.label}>Expires</Text>
+                    <Text style={[styles.label, {color: theme.color}]}>Expires</Text>
                     <TextInput
                         style={styles.inputs}
                         keyboardType="phone-pad"
                     />
                 </View>
                 <View style={styles.name_input}>
-                    <Text style={styles.label}>CVV</Text>
+                    <Text style={[styles.label, {color: theme.color}]}>CVV</Text>
                     <TextInput
                         style={styles.inputs}
                         keyboardType="phone-pad"

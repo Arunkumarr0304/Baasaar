@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
 import { category_data, category_tab } from '../../components/Data';
 import Dropdown from "../../assets/images/dropdown.svg";
 import Dropup from "../../assets/images/red_dropup.svg";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Category = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [activeTab, setActiveTab] = useState(category_tab[0].id);
   const [openDropdowns, setOpenDropdowns] = useState({});
 
@@ -26,12 +28,12 @@ const Category = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}>Category</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>Category</Text>
       </View>
       <ScrollView style={styles.vertical_scrollview} showsVerticalScrollIndicator={false}>
         <ScrollView horizontal={true} style={styles.tabContainer} showsHorizontalScrollIndicator={false}>
@@ -41,7 +43,7 @@ const Category = () => {
               key={d.id} 
               onPress={() => handleTabPress(d.id)}
             >
-              <Text style={styles.tabName}>{d.name}</Text>
+              <Text style={[styles.tabName, { color: activeTab === darkMode ? '#ffffff' : theme.text }]}>{d.name}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -53,23 +55,23 @@ const Category = () => {
                 onPress={() => toggleDropdown(d.id)}
               >
                 {d.image}
-                <Text style={styles.dropdownText}>{d.name}</Text>
+                <Text style={[styles.dropdownText, {color: theme.color}]}>{d.name}</Text>
                 {openDropdowns[d.id] ? <Dropup /> : <Dropdown />}
               </TouchableOpacity>
               {openDropdowns[d.id] && (
                 <View style={styles.dropdownContent}>
                   {d.content.map((item) => (
                     <View style={styles.tabs_container} key={item.id}>
-                      <Text style={styles.tabs}>{item.content1}</Text>
-                      <Text style={styles.tabs}>{item.content2}</Text>
-                      <Text style={styles.tabs}>{item.content3}</Text>
-                      <Text style={styles.tabs}>{item.content4}</Text>
-                      <Text style={styles.tabs}>{item.content5}</Text>
-                      <Text style={styles.tabs}>{item.content6}</Text>
-                      <Text style={styles.tabs}>{item.content7}</Text>
-                      <Text style={styles.tabs}>{item.content8}</Text>
-                      <Text style={styles.tabs}>{item.content9}</Text>
-                      <Text style={styles.tabs}>{item.content10}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content1}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content2}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content3}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content4}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content5}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content6}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content7}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content8}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content9}</Text>
+                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content10}</Text>
                     </View>
                   ))}
                 </View>
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
   },
   tabName: {
     color: '#151515',
+    textTransform: 'capitalize',
   },
   dropdownContainer: {
     marginVertical: 20,
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
   tabs: {
     borderWidth: 2,
     borderColor: '#FFB709',
-    borderRadius: 25,
+    borderRadius: 5,
     paddingVertical: 7,
     paddingHorizontal: 45,
     maxWidth: 150,

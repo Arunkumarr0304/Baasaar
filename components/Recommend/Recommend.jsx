@@ -1,16 +1,18 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { collection_data, recommend_data } from '../Data';
 import Collection from "../../assets/images/top_collection.svg";
 import Right from "../../assets/images/top_collection_group.svg";
 import {Link} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Recommend = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   return (
     <View style={styles.recommend_section}>
       <View style={styles.header}>
-        <Text style={styles.heading}>Recommended</Text>
-        <Link style={styles.show} href="/all_products">show all</Link>
+        <Text style={[styles.heading, {color: theme.color}]}>Recommended</Text>
+        <Link style={[styles.show, {color: theme.text}]} href="/all_products">show all</Link>
       </View>
       <ScrollView horizontal={true} style={styles.stack_container} showsHorizontalScrollIndicator={false}>
         {recommend_data.map((d) => (
@@ -24,8 +26,8 @@ const Recommend = () => {
         ))}
       </ScrollView>
       <View style={styles.header}>
-        <Text style={styles.heading}>Top Collection</Text>
-        <Link style={styles.show} href="/all_products">show all</Link>
+        <Text style={[styles.heading, {color: theme.color}]}>Top Collection</Text>
+        <Link style={[styles.show, {color: theme.text}]} href="/all_products">show all</Link>
       </View>
       <View style={styles.image_box}>
         <Collection />

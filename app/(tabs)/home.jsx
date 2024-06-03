@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Category from '../../assets/images/category.svg';
+import Dark_cat from "../../assets/images/dark_category.svg";
 import Cart from '../../assets/images/bag.svg';
+import Dark_cart from "../../assets/images/dark_bag.svg";
 import Notification from '../../assets/images/notification.svg';
+import Dark_notify from '../../assets/images/dark_notification.svg';
 import Logo from '../../assets/images/logo.svg';
+import Dark_logo from '../../assets/images/dark_logo.svg';
 import Feather from 'react-native-vector-icons/Feather';
 import Swiper from 'react-native-swiper';
 import { scroll_slider, slider_data } from '../../components/Data';
@@ -11,22 +15,24 @@ import Arrows from "../../assets/images/slider_arrow.svg";
 import Feature from '../../components/Feature/Feature';
 import Recommend from '../../components/Recommend/Recommend';
 import { router } from 'expo-router';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Home = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [activeId, setActiveId] = useState(scroll_slider[0].id);
   const notification = () => {
     router.push('notification');
   }
 
   return (
-    <View style={styles.Homepage}>
+    <View style={[styles.Homepage, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Category />
-        <Logo />
+       {darkMode ? <Dark_cat /> : <Category /> } 
+       {darkMode? <Dark_logo /> : <Logo />}
         <View style={styles.right_header}>
-          <Cart />
+        { darkMode ? <Dark_cart /> : <Cart />}
           <TouchableOpacity style={styles.image_box} onPress={notification}>
-            <Notification />
+          {darkMode ? <Dark_notify /> : <Notification />}
           </TouchableOpacity>
         </View>
       </View>
@@ -134,7 +140,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F6F6F6',
-    borderRadius: 30,
+    borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 20,
@@ -261,10 +267,10 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#969696',
   },
-  activetext: {
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: '500',
-    color: '#3A2C27',
-  }
+  // activetext: {
+  //   fontSize: 12,
+  //   lineHeight: 16,
+  //   fontWeight: '500',
+  //   color: '#3A2C27',
+  // }
 });

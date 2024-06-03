@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import { cart_data, details_data } from '../../components/Data';
 import Arrow from "../../assets/images/right_arrow.svg";
+import ThemeContext from '../../theme/ThemeContext';
+import Dark_arrow from '../../assets/images/dark_right_arrow.svg';
 
 const Order_details = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('myorder');
     };
@@ -13,54 +16,54 @@ const Order_details = () => {
       router.push('track');
     };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
     <View style={styles.header}>
       <TouchableOpacity onPress={goback}>
         <Back />
       </TouchableOpacity>
-      <Text style={styles.heading}>Order Detail</Text>
+      <Text style={[styles.heading, {color: theme.color}]}>Order Detail</Text>
     </View>
-    <View style={styles.details_container}>
+    <View style={[styles.details_container, {backgroundColor: theme.cardbg}]}>
     <View style={styles.details_container2}>
         {
           details_data.map((d) => (
             <View style={styles.row} key={d.id}>
-              <Text style={styles.row_heading}>{d.heading}</Text>
-              <Text style={styles.row_value}>{d.value}</Text>
+              <Text style={[styles.row_heading, {color:theme.color}]}>{d.heading}</Text>
+              <Text style={[styles.row_value, {color:theme.color}]}>{d.value}</Text>
             </View>
           ))
         }
     </View>
     <View style={styles.row2}></View>
     <View style={styles.row}>
-              <Text style={styles.row_heading}>Cancel Order</Text>
-              <Arrow />
+              <Text style={[styles.row_heading, {color: theme.color}]}>Cancel Order</Text>
+            {darkMode ? <Dark_arrow /> :  <Arrow />}
             </View>
     </View>
     <Text style={styles.shipping}>Shipping Details</Text>
 
     <View style={styles.stack_container}>
         {cart_data.map((d, index) => (
-          <View style={styles.stack_box} key={d.id}>
+          <View style={[styles.stack_box, {backgroundColor: theme.cardbg}]} key={d.id}>
             {d.image}
             <View style={styles.details}>
-              <Text style={styles.name}>{d.name}</Text>
+              <Text style={[styles.name, {color: theme.color}]}>{d.name}</Text>
               <View style={styles.optional_row}>
-                {d.option && <Text style={styles.option}>{d.option}</Text>}
-                {d.size && <Text style={styles.option}>{d.size}</Text>}
+                {d.option && <Text style={[styles.option, {color: theme.color}]}>{d.option}</Text>}
+                {d.size && <Text style={[styles.option, {color: theme.color}]}>{d.size}</Text>}
               </View>
-              <Text style={styles.delivery}>{d.delivery}</Text>
+              <Text style={[styles.delivery, {color: theme.color}]}>{d.delivery}</Text>
               <View style={styles.price_row}>
-                <Text style={styles.dashed}>{d.dashed}</Text>
-                <Text style={styles.price}>/ ${d.price}</Text>
+                <Text style={[styles.dashed, {color: theme.color}]}>{d.dashed}</Text>
+                <Text style={[styles.price, {color: theme.color}]}>/ ${d.price}</Text>
               </View>
             </View>
           </View>
         ))}
       </View>
       <TouchableOpacity style={styles.track_row} onPress={track}>
-        <Text style={styles.track}>Track Order</Text>
-        <Arrow />
+        <Text style={[styles.track, {color: theme.color}]}>Track Order</Text>
+      { darkMode ? <Dark_arrow /> : <Arrow />}
       </TouchableOpacity>
     </View>
   )

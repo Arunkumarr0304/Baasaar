@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Animated } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import { pay_types, payment_data, payment_data2 } from '../../components/Data';
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const Payment_method = () => {
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [scaleAnim] = useState(new Animated.Value(1));
     const goback = () =>{
         router.push('profile');
@@ -22,15 +24,15 @@ const Payment_method = () => {
     };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
     <View style={styles.header}>
       <TouchableOpacity onPress={goback}>
         <Back />
       </TouchableOpacity>
-      <Text style={styles.heading}>payment method</Text>
+      <Text style={[styles.heading, {color: theme.color}]}>payment method</Text>
     </View>
     <View style={styles.choose_row}>
-                <Text style={styles.choose}>Card Management</Text>
+                <Text style={[styles.choose, {color: theme.color}]}>Card Management</Text>
                 <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
             <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
@@ -66,7 +68,7 @@ const Payment_method = () => {
                 }
             </Swiper>
             </View>
-            <Text style={styles.or}>Or checkout with</Text>
+            <Text style={[styles.or, {color:theme.color}]}>Or checkout with</Text>
                 <ScrollView horizontal={true} style={styles.pay_container}>
                     {
                         pay_types.map((d) => (

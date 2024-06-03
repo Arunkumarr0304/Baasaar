@@ -1,20 +1,22 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { feature_data } from '../Data';
 import Collection from "../../assets/images/collection.svg";
 import Right from "../../assets/images/collection_group.svg";
 import {Link, router} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const Feature = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
    const details = () => {
     router.push('product_details');
    }
   return (
     <View style={styles.feature_section}>
       <View style={styles.header}>
-        <Text style={styles.heading}>Feature Products</Text>
-        <Link style={styles.show} href="/all_products">show all</Link>
+        <Text style={[styles.heading, {color: theme.color}]}>Feature Products</Text>
+        <Link style={[styles.show, {color: theme.text}]} href="/all_products">show all</Link>
       </View>
 
       <ScrollView horizontal={true} style={styles.container}>
@@ -22,7 +24,7 @@ const Feature = () => {
           <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details}>
             {d.image}
             <View style={styles.box_body}>
-              <Text style={styles.box_heading}>{d.heading}</Text>
+              <Text style={[styles.box_heading, {color: theme.text}]}>{d.heading}</Text>
               <Text style={styles.price}>${d.price}</Text>
             </View>
           </TouchableOpacity>

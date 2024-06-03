@@ -1,18 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import {Stack} from 'expo-router';
+// _layout.jsx
+import React from 'react';
+import { Stack } from 'expo-router';
+import { ThemeProvider } from '../theme/ThemeContext';
 
 const RootLayout = () => {
   return (
-    <Stack>
-        <Stack.Screen name='index' options={{headerShown: false}} />
-        <Stack.Screen name='(auth)' options={{headerShown: false}} />
-        <Stack.Screen name='(tabs)' options={{headerShown: false}} />
-       
-    </Stack>
-  )
-}
+    <ThemeProvider>
+      <Stack>
+        <Stack.Screen name='index' options={{ headerShown: false }} />
+        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+      </Stack>
+    </ThemeProvider>
+  );
+};
 
-export default RootLayout
-
-const styles = StyleSheet.create({})
+export default RootLayout;

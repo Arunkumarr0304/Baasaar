@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import { cart_data } from '../../components/Data';
 import Button from '../../components/Button/Button';
-
+import ThemeContext from '../../theme/ThemeContext';
 
 const Cart = () => {
+  const { theme } = useContext(ThemeContext);
   const [cartData, setCartData] = useState(cart_data);
   const [promoCode, setPromoCode] = useState("");
 
@@ -25,7 +26,6 @@ const Cart = () => {
     setPromoCode("");
   };
 
-
   const incrementCount = (index) => {
     const updatedCart = [...cartData];
     updatedCart[index].count++;
@@ -41,68 +41,65 @@ const Cart = () => {
   };
 
   return (
-    <View style={styles.cartpage}>
+    <View style={[styles.cartpage, { backgroundColor: theme.background }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}>My Cart</Text>
+        <Text style={[styles.heading, { color: theme.color }]}>My Cart</Text>
       </View>
-      <ScrollView>
-      <View style={styles.items_row}>
-        <Text style={styles.items}>Items ({cartData.length})</Text>
-        <Text style={styles.remove}>Remove all</Text>
-      </View>
-      <View style={styles.stack_container}>
-        {cartData.map((d, index) => (
-          <View style={styles.stack_box} key={d.id}>
-            {d.image}
-            <View style={styles.details}>
-              <Text style={styles.name}>{d.name}</Text>
-              <View style={styles.optional_row}>
-                {d.option && <Text style={styles.option}>{d.option}</Text>}
-                {d.size && <Text style={styles.option}>{d.size}</Text>}
+      <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContentContainer} showsVerticalScrollIndicator={false}>
+        <View style={styles.items_row}>
+          <Text style={[styles.items, { color: theme.color }]}>Items ({cartData.length})</Text>
+          <Text style={[styles.remove, { color: theme.text }]}>Remove all</Text>
+        </View>
+        <View style={styles.stack_container}>
+          {cartData.map((d, index) => (
+            <View style={[styles.stack_box, { backgroundColor: theme.cardbg }]} key={d.id}>
+              {d.image}
+              <View style={styles.details}>
+                <Text style={[styles.name, { color: theme.color }]}>{d.name}</Text>
+                <View style={styles.optional_row}>
+                  {d.option && <Text style={[styles.option, { color: theme.color }]}>{d.option}</Text>}
+                  {d.size && <Text style={[styles.option, { color: theme.color }]}>{d.size}</Text>}
+                </View>
+                <Text style={styles.delivery}>{d.delivery}</Text>
+                <View style={styles.price_row}>
+                  <Text style={[styles.dashed, { color: theme.color }]}>{d.dashed}</Text>
+                  <Text style={[styles.price, { color: theme.color }]}>/ ${d.price}</Text>
+                </View>
               </View>
-              <Text style={styles.delivery}>{d.delivery}</Text>
-              <View style={styles.price_row}>
-                <Text style={styles.dashed}>{d.dashed}</Text>
-                <Text style={styles.price}>/ ${d.price}</Text>
+              <View style={styles.counter}>
+                <TouchableOpacity onPress={() => decrementCount(index)}>
+                  <Text style={styles.counterButton}>-</Text>
+                </TouchableOpacity>
+                <Text style={styles.count}>{d.count}</Text>
+                <TouchableOpacity onPress={() => incrementCount(index)}>
+                  <Text style={styles.counterButton}>+</Text>
+                </TouchableOpacity>
               </View>
             </View>
-            <View style={styles.counter}>
-              <TouchableOpacity onPress={() => decrementCount(index)}>
-                <Text style={styles.counterButton}>-</Text>
-              </TouchableOpacity>
-              <Text style={styles.count}>{d.count}</Text>
-              <TouchableOpacity onPress={() => incrementCount(index)}>
-                <Text style={styles.counterButton}>+</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ))}
-      </View>
-      <View style={styles.total_price}>
-        <Text style={styles.total}>Total Price :</Text>
-        <Text style={styles.totalprice}>$400</Text>
-      </View>
-      <View style={styles.promo}>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter Coupon Code"
-              value={promoCode}
-              onChangeText={handleChangeText}
-            />
-             <TouchableOpacity
-              onPress={handleApplyPromoCode}
-              style={styles.send_box}
-            >
-                <Text style={styles.apply}>Apply</Text>
-            </TouchableOpacity>
-            </View>
-            <View style={styles.button_box}>
-            <Button buttonText="continue" onPress={continues} />
-            </View>
-            </ScrollView>
+          ))}
+        </View>
+        <View style={styles.total_price}>
+          <Text style={[styles.total, { color: theme.color }]}>Total Price :</Text>
+          <Text style={styles.totalprice}>$400</Text>
+        </View>
+        <View style={styles.promo}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter Coupon Code"
+            value={promoCode}
+            onChangeText={handleChangeText}
+          />
+          <TouchableOpacity onPress={handleApplyPromoCode} style={styles.send_box}>
+            <Text style={styles.apply}>Apply</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.button_box}>
+          <Button buttonText="continue" onPress={continues} />
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -111,6 +108,7 @@ export default Cart;
 
 const styles = StyleSheet.create({
   cartpage: {
+    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 20,
   },
@@ -124,6 +122,12 @@ const styles = StyleSheet.create({
     lineHeight: 29,
     fontWeight: '700',
     color: '#151515',
+  },
+  scrollContainer: {
+    flex: 1,
+  },
+  scrollContentContainer: {
+    paddingBottom: 40,
   },
   items_row: {
     flexDirection: 'row',
@@ -227,7 +231,7 @@ const styles = StyleSheet.create({
   },
   total_price: {
     flexDirection: 'row',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 50,
   },
@@ -270,17 +274,15 @@ const styles = StyleSheet.create({
   },
   apply: {
     color: '#ffffff',
-    backgroundColor:'#FF0000',
+    backgroundColor: '#FF0000',
     borderRadius: 5,
     paddingVertical: 8,
     paddingHorizontal: 15,
     textAlign: 'center',
     alignItems: "center",
     justifyContent: 'center',
- 
   },
   button_box: {
-    paddingBottom: 30,
+    paddingBottom: 40,
   }
 });
-

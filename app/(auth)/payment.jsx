@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView } from 'react-native'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import Swiper from 'react-native-swiper';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
@@ -12,10 +12,12 @@ import { pay_types, payment_data, price_data } from '../../components/Data';
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Button from '../../components/Button/Button';
+import ThemeContext from '../../theme/ThemeContext';
 
 
 
 const Payment = () => {
+    const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [isSelected, setSelection] = useState(false);
     const [scaleAnim] = useState(new Animated.Value(1));
 
@@ -52,12 +54,12 @@ const Payment = () => {
         </TouchableOpacity>
     );
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
                 </TouchableOpacity>
-                <Text style={styles.heading}>payment</Text>
+                <Text style={[styles.heading, {color: theme.color}]}>payment</Text>
             </View>
             <View style={styles.row}>
                 <Location />
@@ -66,8 +68,9 @@ const Payment = () => {
                 <Line />
                 <Tick />
             </View>
+            <ScrollView>
             <View style={styles.choose_row}>
-                <Text style={styles.choose}>Choose Your Card</Text>
+                <Text style={[styles.choose, {color: theme.text}]}>Choose Your Card</Text>
                 <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
             <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
@@ -103,7 +106,7 @@ const Payment = () => {
                 }
             </Swiper>
             </View>
-            <Text style={styles.or}>Or checkout with</Text>
+            <Text style={[styles.or, {color: theme.text}]}>Or checkout with</Text>
                 <ScrollView horizontal={true} style={styles.pay_container}>
                     {
                         pay_types.map((d) => (
@@ -118,20 +121,21 @@ const Payment = () => {
                     price_data.map((d) => (
                         <View style={styles.price_row} key={d.id}>
                             <Text style={styles.price_heading}>{d.heading}</Text>
-                            <Text style={styles.value}>{d.value}</Text>
+                            <Text style={[styles.value, {color: theme.text}]}>{d.value}</Text>
                         </View>
                     ))
                 }
             </View>
             <View style={styles.total_row}>
-                <Text style={styles.sub}>Subtotal</Text>
-                <Text style={styles.total}>$110</Text>
+                <Text style={[styles.sub, {color: theme.text}]}>Subtotal</Text>
+                <Text style={[styles.total, {color: theme.text}]}>$110</Text>
             </View>
             <View style={styles.billing_check}>
                     <Checkbox checked={isSelected} onPress={toggleCheckbox} />
-                    <Text style={styles.bill}>I agree to Terms & conditions</Text>
+                    <Text style={[styles.bill, {color: theme.text}]}>I agree to Terms & conditions</Text>
                 </View>
                 <Button buttonText="Place My Order" onPress={order} />
+                </ScrollView>
         </View>
     )
 }
@@ -149,7 +153,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 20,
-        gap: 75,
+        gap: 65,
     },
     heading: {
         fontSize: 24,

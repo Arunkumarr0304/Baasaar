@@ -1,13 +1,16 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import Order from "../../assets/images/order_stack_img.svg";
 import Delivered from "../../assets/images/delivered_stack_img.svg";
 import { ordered_data } from '../../components/Data';
 import Arrow from "../../assets/images/right_arrow.svg";
+import Dark_arrow from '../../assets/images/dark_right_arrow.svg';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Myorder = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () =>{
         router.push('profile');
     };
@@ -16,12 +19,12 @@ const Myorder = () => {
     };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}> my order</Text>
+        <Text style={[styles.heading, {color: theme.color}]}> my order</Text>
       </View>
       <TouchableOpacity style={styles.processing_box}>
         <Text style={styles.process}>Processing</Text>
@@ -29,15 +32,15 @@ const Myorder = () => {
       <View style={styles.order_container}>
         {
             ordered_data.map((d) => (
-                <TouchableOpacity style={styles.order_box} key={d.id} onPress={details}>
+                <TouchableOpacity style={[styles.order_box, {backgroundColor: theme.cardbg}]} key={d.id} onPress={details}>
                     <View style={styles.left_content}>
                         <Order />
                         <View style={styles.left_text}>
-                            <Text style={styles.left_text1}>{d.name}</Text>
-                            <Text style={styles.left_text2}>{d.items}</Text>
+                            <Text style={[styles.left_text1, {color: theme.color}]}>{d.name}</Text>
+                            <Text style={[styles.left_text2, {color: theme.color}]}>{d.items}</Text>
                         </View>
                     </View>
-                    <Arrow />
+                    {darkMode ? <Dark_arrow /> : <Arrow />}
                 </TouchableOpacity>
             ))
         }
@@ -48,15 +51,15 @@ const Myorder = () => {
       <View style={styles.order_container}>
         {
             ordered_data.map((d) => (
-                <TouchableOpacity style={styles.order_box} key={d.id}>
+                <TouchableOpacity style={[styles.order_box, {backgroundColor: theme.cardbg}]} key={d.id}>
                     <View style={styles.left_content}>
                         <Delivered />
                         <View style={styles.left_text}>
-                            <Text style={styles.left_text1}>{d.name}</Text>
-                            <Text style={styles.left_text2}>{d.items}</Text>
+                            <Text style={[styles.left_text1, {color: theme.color}]}>{d.name}</Text>
+                            <Text style={[styles.left_text2, {color: theme.color}]}>{d.items}</Text>
                         </View>
                     </View>
-                    <Arrow />
+                  { darkMode? <Dark_arrow /> : <Arrow />}
                 </TouchableOpacity>
             ))
         }
