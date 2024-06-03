@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const My_profile = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
         router.push('profile');
       };
@@ -25,18 +27,18 @@ const My_profile = () => {
           };
         
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={styles.heading}> my profile</Text>
+        <Text style={[styles.heading, {color: theme.color}]}> my profile</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <Text style={styles.main_label}>Profile Details</Text>
+      <Text style={[styles.main_label, {color: theme.color}]}>Profile Details</Text>
       <View style={styles.input_container}>
             <View style={styles.name_input}>
-              <Text style={styles.label}>User Name</Text>
+              <Text style={[styles.label, {color: theme.text}]}>User Name</Text>
               <TextInput
                 style={styles.input}
                 autoCapitalize="none"
@@ -44,7 +46,7 @@ const My_profile = () => {
               />
             </View>
             <View style={styles.name_input}>
-              <Text style={styles.label}>Password</Text>
+              <Text style={[styles.label, {color: theme.text}]}>Password</Text>
               <TextInput
                 style={[styles.password_input, styles.passwordInput]}
                 secureTextEntry={!passwordVisible}
@@ -61,7 +63,7 @@ const My_profile = () => {
               </TouchableOpacity>
             </View>
             <View style={styles.name_input}>
-            <Text style={styles.label}>Contact</Text>
+            <Text style={[styles.label, {color:theme.text}]}>Contact</Text>
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
@@ -69,10 +71,10 @@ const My_profile = () => {
           </View>
           </View>
           <View style={styles.password_containers}>
-          <Text style={styles.main_label}>Change Password</Text>
+          <Text style={[styles.main_label, {color:theme.color}]}>Change Password</Text>
           <View style={styles.input_container}>
         <View style={styles.name_input}>
-          <Text style={styles.label}>new Password</Text>
+          <Text style={[styles.label, {color: theme.text}]}>new Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible1}
@@ -89,7 +91,7 @@ const My_profile = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.name_input}>
-          <Text style={styles.label}>confirm Password</Text>
+          <Text style={[styles.label, {color: theme.text}]}>confirm Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible2}

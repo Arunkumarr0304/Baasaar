@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native'
 import React, {useContext, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import { login_items } from '../../components/Data';
 import {Link} from "expo-router";
 import {Redirect, router} from "expo-router";
 import ThemeContext from '../../theme/ThemeContext';
+import Back from "../../assets/images/back.svg";
 
 const Login = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
@@ -22,10 +23,17 @@ const Login = () => {
     
   return (
     <View style={[styles.login_page, {backgroundColor: theme.background}]}>
+      <StatusBar
+        backgroundColor="transparent" 
+        barStyle={darkMode ? "light-content" : "dark-content"} 
+        translucent 
+      />
+     
         <View style={styles.header}>
             <Text style={[styles.heading, {color: theme.color}]}>Welcome <Text style={styles.red}>Back!</Text></Text>
             <Text style={[styles.header_text, {color: theme.text}]}>Hello there, please login first 👋</Text>
         </View>
+    
         <View style={styles.input_container}>
             <View style={styles.name_input}>
               <Text style={[styles.label, {color: theme.text}]}>Email/Phone</Text>
@@ -81,6 +89,7 @@ const styles = StyleSheet.create({
         paddingBottom: 50,
         backgroundColor: '#ffffff',
     },
+
     header: {
         gap: 10,
     },

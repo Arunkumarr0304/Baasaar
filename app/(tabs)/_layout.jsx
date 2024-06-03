@@ -1,8 +1,9 @@
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import CategoryIcon from '../../components/CategoryIcon';  
+import ThemeContext from '../../theme/ThemeContext';
 
 const TabIcon = ({ icon, color, custom, library }) => {
   if (custom) {
@@ -34,8 +35,9 @@ const TabBarButton = ({ children, onPress, accessibilityState }) => {
 };
 
 const TabsLayout = () => {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   return (
-    <View style={styles.main_tab}>
+    <View style={[styles.main_tab, {backgroundColor: theme.background}]}>
       <Tabs
         screenOptions={({ route }) => ({
           tabBarShowLabel: false,

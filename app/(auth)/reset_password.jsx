@@ -7,12 +7,18 @@ import { Redirect, router, useRouter } from "expo-router";
 import Success from "../../assets/images/successful.svg";
 import { useFonts, Kalam_400Regular, Kalam_700Bold } from '@expo-google-fonts/kalam';
 import ThemeContext from '../../theme/ThemeContext';
+import Back from '../../assets/images/back.svg'; 
 
 const Reset = () => {
+ 
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+
+  const goback= () => {
+    router.push('verification');
+  }
 
   const [fontsLoaded] = useFonts({
     Kalam_400Regular,
@@ -52,7 +58,12 @@ const Reset = () => {
   return (
     <View style={[styles.reset_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
+      <View style={styles.main_header}>
+        <TouchableOpacity onPress={goback}>
+      <Back />
+      </TouchableOpacity>
         <Text style={[styles.heading, {color: theme.color}]}>Reset <Text style={styles.red}>Password</Text></Text>
+       </View>
         <Text style={[styles.header_text, {color: theme.text}]}>Enter your new password, Remember this time!</Text>
       </View>
       <View style={styles.input_container}>
@@ -133,6 +144,11 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
     backgroundColor: '#ffffff',
     flex: 1,
+  },
+  main_header: {
+    flexDirection:'row',
+    alignItems: 'center',
+    gap: 20,
   },
   header: {
     gap: 10,

@@ -5,6 +5,8 @@ import CheckCircle from '../../components/Check_Circle/Check_Circle';
 import Button from '../../components/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 import ThemeContext from '../../theme/ThemeContext';
+import Back from '../../assets/images/back.svg'; 
+import {Redirect, router} from "expo-router";
 
 const Forget = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
@@ -14,6 +16,9 @@ const Forget = () => {
   const handleBoxPress = (id) => {
     setActiveBox(id);
   };
+  const goback= () => {
+    router.push('login');
+  }
 
   const confirm = () => {
       navigation.navigate('verification');
@@ -21,7 +26,12 @@ const Forget = () => {
   return (
     <View style={[styles.forget_password_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
+      <View style={styles.main_header}>
+        <TouchableOpacity onPress={goback}>
+      <Back />
+      </TouchableOpacity>
             <Text style={[styles.heading, {color: theme.color}]}>Forgot <Text style={styles.red}>Password</Text></Text>
+            </View>
             <Text style={[styles.header_text, {color: theme.text}]}>Enter your Email then we will send you OTP to reset new password.</Text>
         </View>
 
@@ -64,6 +74,11 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 50,
     backgroundColor: '#ffffff',
+  },
+  main_header: {
+    flexDirection:'row',
+    alignItems: 'center',
+    gap: 20,
   },
   header: {
     gap: 10,

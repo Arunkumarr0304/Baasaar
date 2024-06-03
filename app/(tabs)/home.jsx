@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 import React, { useContext, useState } from 'react';
 import Category from '../../assets/images/category.svg';
 import Dark_cat from "../../assets/images/dark_category.svg";
@@ -17,6 +17,7 @@ import Recommend from '../../components/Recommend/Recommend';
 import { router } from 'expo-router';
 import ThemeContext from '../../theme/ThemeContext';
 
+
 const Home = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [activeId, setActiveId] = useState(scroll_slider[0].id);
@@ -26,6 +27,11 @@ const Home = () => {
 
   return (
     <View style={[styles.Homepage, {backgroundColor: theme.background}]}>
+      <StatusBar 
+        backgroundColor="transparent" 
+        barStyle={darkMode ? "light-content" : "dark-content"} 
+        translucent 
+      />
       <View style={styles.header}>
        {darkMode ? <Dark_cat /> : <Category /> } 
        {darkMode? <Dark_logo /> : <Logo />}

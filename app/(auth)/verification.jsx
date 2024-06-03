@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Button from '../../components/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 import ThemeContext from '../../theme/ThemeContext';
+import Back from '../../assets/images/back.svg'; 
+import {Redirect, router} from "expo-router";
 
 const Verification = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
@@ -11,7 +13,10 @@ const Verification = () => {
   const [timer, setTimer] = useState(110); 
   const otpInputs = useRef([]);
 
-  
+  const goback= () => {
+    router.push('forget_password');
+  }
+
   const confirm = () => {
     navigation.navigate('reset_password');
 }
@@ -62,7 +67,12 @@ const Verification = () => {
   return (
     <View style={[styles.Verification_page, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
+      <View style={styles.main_header}>
+      <TouchableOpacity onPress={goback} >
+      <Back />
+      </TouchableOpacity>
         <Text style={[styles.heading, {color: theme.color}]}>OTP <Text style={styles.red}>Verification</Text></Text>
+       </View>
         <Text style={[styles.header_text, {color: theme.text}]}>Please check your email/phone to see the verification code 📨</Text>
       </View>
 
@@ -103,6 +113,11 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 150,
     backgroundColor: '#ffffff',
+  },
+  main_header: {
+    flexDirection:'row',
+    alignItems: 'center',
+    gap: 20,
   },
   header: {
     gap: 10,

@@ -62,11 +62,11 @@ import Pay5 from "../assets/images/pay5.svg";
 import Wishlist1 from "../assets/images/wishlist1.svg";
 import Wishlist2 from "../assets/images/wishlist2.svg";
 
-import Category1 from "../assets/images/back.svg";
-import Category2 from "../assets/images/category1.svg";
-import Category3 from "../assets/images/category1.svg";
-import Category4 from "../assets/images/category1.svg";
-import Category5 from "../assets/images/category1.svg";
+import Category1 from "../assets/images/category1.svg";
+import Category2 from "../assets/images/category2.svg";
+import Category3 from "../assets/images/category3.svg";
+import Category4 from "../assets/images/category4.svg";
+import Category5 from "../assets/images/category5.svg";
 
 import Opened from "../assets/images/opened.svg";
 import NotOpened from "../assets/images/notopened.svg";

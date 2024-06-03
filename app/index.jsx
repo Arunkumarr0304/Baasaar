@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { View, Text, StyleSheet, Dimensions, ScrollView, StatusBar, Animated } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
@@ -8,12 +8,14 @@ import Button from "../components/Button/Button";
 import Pagination from "../components/Pagination/Pagination";
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, Kalam_400Regular, Kalam_700Bold } from '@expo-google-fonts/kalam';
+import ThemeContext from "../theme/ThemeContext";
 
 const { width, height } = Dimensions.get('window');
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const navigation = useNavigation();
   const swiperRef = useRef(null);
   const totalPages = pages.length;
@@ -124,8 +126,6 @@ export default function App() {
           )}
         </View>
       </View>
-      
-      <StatusBar backgroundColor='transparent' style='light' />
     </SafeAreaView>
   );
 }

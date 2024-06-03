@@ -4,13 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import LanguageDropdown from '../../components/LanguageDropdown/LanguageDropdown'; // Ensure this path is correct
 import Button from '../../components/Button/Button';
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
 import ThemeContext from '../../theme/ThemeContext';
+import Back from "../../assets/images/back.svg";
 
 const Register = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
+  const home = () => {
+    router.push('home');
+  }
+
+  const goback = () => {
+    router.push('login');
+  }
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -19,9 +27,16 @@ const Register = () => {
   };
   return (
     <View style={[styles.register_page, {backgroundColor: theme.background}]}>
+       
       <View style={styles.header}>
+      <View style={styles.main_header}>
+        <TouchableOpacity onPress={goback}>
+      <Back />
+      </TouchableOpacity>
         <Text style={[styles.heading, {color: theme.color}]}>Register<Text style={styles.red}> Account</Text></Text>
+        </View>
         <Text style={[styles.header_text, {color: theme.text}]}>Hello there, please login first 👋</Text>
+      
       </View>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.input_container}>
@@ -69,7 +84,7 @@ const Register = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.name_input}>
-            <Text style={[styles.label, {color: theme.text}]}>Password</Text>
+            <Text style={[styles.label, {color: theme.text}]}> confirm Password</Text>
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible1}
@@ -87,7 +102,7 @@ const Register = () => {
           </View>
         </View>
         <View style={styles.button_box}>
-            <Button buttonText="create" />
+            <Button buttonText="create" onPress={home} />
         </View>
         <Text style={[styles.bottom_text, {color: theme.text}]}>Already have an account? <Link style={styles.register} href="/login"> Login</Link></Text>
       </ScrollView>
@@ -101,6 +116,11 @@ const styles = StyleSheet.create({
   register_page: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  main_header: {
+    flexDirection:'row',
+    alignItems: 'center',
+    gap: 20,
   },
   header: {
     paddingHorizontal: 20,
