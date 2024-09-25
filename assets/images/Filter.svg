@@ -1,0 +1,6 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.875 9.5L23 9.5" stroke="#4C4C4C" stroke-width="2" stroke-linecap="round"/>
+<path d="M5 18.5L16.25 18.5" stroke="#4C4C4C" stroke-width="2" stroke-linecap="round"/>
+<ellipse cx="8.375" cy="9.5" rx="3.375" ry="3.375" transform="rotate(90 8.375 9.5)" stroke="#4C4C4C" stroke-width="2" stroke-linecap="round"/>
+<ellipse cx="19.625" cy="18.5" rx="3.375" ry="3.375" transform="rotate(90 19.625 18.5)" stroke="#4C4C4C" stroke-width="2" stroke-linecap="round"/>
+</svg>
