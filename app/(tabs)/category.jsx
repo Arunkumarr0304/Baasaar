@@ -51,7 +51,7 @@ const Category = () => {
           {category_data.map((d) => (
             <View key={d.id}>
               <TouchableOpacity 
-                style={styles.dropdownBox} 
+                style={[styles.dropdownBox, {backgroundColor:theme.cardbg}]} 
                 onPress={() => toggleDropdown(d.id)}
               >
                 {d.image}
@@ -62,16 +62,16 @@ const Category = () => {
                 <View style={styles.dropdownContent}>
                   {d.content.map((item) => (
                     <View style={styles.tabs_container} key={item.id}>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content1}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content2}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content3}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content4}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content5}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content6}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content7}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content8}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content9}</Text>
-                      <Text style={[styles.tabs, {color: theme.text}]}>{item.content10}</Text>
+                      <Text style={[styles.tabs]}>{item.content1}</Text>
+                      <Text style={[styles.tabs]}>{item.content2}</Text>
+                      <Text style={[styles.tabs]}>{item.content3}</Text>
+                      <Text style={[styles.tabs]}>{item.content4}</Text>
+                      <Text style={[styles.tabs]}>{item.content5}</Text>
+                      <Text style={[styles.tabs]}>{item.content6}</Text>
+                      <Text style={[styles.tabs]}>{item.content7}</Text>
+                      <Text style={[styles.tabs]}>{item.content8}</Text>
+                      <Text style={[styles.tabs]}>{item.content9}</Text>
+                      <Text style={[styles.tabs]}>{item.content10}</Text>
                     </View>
                   ))}
                 </View>
@@ -90,13 +90,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
     marginTop: '15%',
+    paddingHorizontal: 20,
   },
   heading: {
     fontSize: 24,
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     maxHeight: 36,
     marginTop: 30,
+    marginHorizontal: 20,
   },
   tab: {
     backgroundColor: '#EEEEEE',
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
   dropdownContainer: {
     marginVertical: 20,
     paddingBottom: 30,
+    paddingHorizontal: 20,
   },
   dropdownBox: {
     flexDirection: 'row',
@@ -139,10 +141,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
     paddingHorizontal: 15,
-    borderWidth: 1,
     borderColor: '#EEEEEE',
     borderRadius: 5,
     marginBottom: 10,
+    shadowColor: '#000', 
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25, 
+    shadowRadius: 3.84,  
+    elevation: 5,
   },
   dropdownText: {
     marginLeft: 10,
@@ -166,6 +175,7 @@ const styles = StyleSheet.create({
   tabs: {
     borderWidth: 2,
     borderColor: '#FFB709',
+    backgroundColor: '#ffffff',
     borderRadius: 5,
     paddingVertical: 7,
     paddingHorizontal: 45,

@@ -48,7 +48,7 @@ const All_products = () => {
                 <Text style={styles.brand}>{d.brand}</Text>
                 <View style={styles.price_row}>
                   <Text style={[styles.dashed, {color: theme.color}]}>{d.dashed}</Text>
-                  <Text style={styles.price}>{d.price}</Text>
+                  <Text style={styles.price}>${d.price}</Text>
                 </View>
               </View>
             </TouchableOpacity>

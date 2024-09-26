@@ -50,6 +50,7 @@ const Register = () => {
               style={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
+              placeholder='John Doe'
             />
           </View>
           <View style={styles.name_input}>
@@ -57,6 +58,7 @@ const Register = () => {
             <TextInput
               style={styles.input}
               keyboardType="email-address"
+              placeholder='minatonami@example.com'
             />
           </View>
           <View style={styles.name_input}>
@@ -64,6 +66,7 @@ const Register = () => {
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
+              placeholder='enter mobile number'
             />
           </View>
           <View style={styles.name_input}>
@@ -71,6 +74,7 @@ const Register = () => {
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible}
+              placeholder='password'
             />
             <TouchableOpacity
               onPress={togglePasswordVisibility}
@@ -88,6 +92,7 @@ const Register = () => {
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible1}
+              placeholder='confirm password'
             />
             <TouchableOpacity
               onPress={togglePasswordVisibility1}

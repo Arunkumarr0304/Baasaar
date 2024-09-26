@@ -73,6 +73,7 @@ const Reset = () => {
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible}
+            placeholder='password'
           />
           <TouchableOpacity
             onPress={togglePasswordVisibility}
@@ -86,10 +87,11 @@ const Reset = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.name_input}>
-          <Text style={[styles.label, {color: theme.text}]}>Password</Text>
+          <Text style={[styles.label, {color: theme.text}]}>New Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible1}
+            placeholder='confirm password'
           />
           <TouchableOpacity
             onPress={togglePasswordVisibility1}

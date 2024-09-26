@@ -10,6 +10,7 @@ import Tick from "../../assets/images/red-tick.png";
 import Confirm from "../../assets/images/confirm_tick.svg";
 import Button from '../../components/Button/Button';
 import ThemeContext from '../../theme/ThemeContext';
+import { Kalam_700Bold } from '@expo-google-fonts/kalam';
 
 const Order = () => {
     const continues = () => {
@@ -21,6 +22,7 @@ const Order = () => {
     };
   return (
     <View style={[styles.order_page, {backgroundColor: theme.background}]}>
+        <View style={styles.column}>
       <View style={styles.header}>
                 <TouchableOpacity onPress={goback}>
                     <Back />
@@ -40,7 +42,10 @@ const Order = () => {
                 <Text style={[styles.complete_text, {color: theme.text}]}>Thank you for your purchase.
         You can view your order in ‘My Orders’ section.</Text>
             </View>
+            </View>
+            <View style={styles.button_box}>
             <Button buttonText="Continue Shopping" onPress={continues} />
+            </View>
     </View>
   )
 }
@@ -52,6 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff',
         paddingHorizontal: 20,
+        justifyContent: 'space-between',
     },
     header: {
         flexDirection: 'row',
@@ -80,14 +86,13 @@ const styles = StyleSheet.create({
     Content: {
         alignItems: 'center',
         justifyContent:'center',
-        marginTop: 100,
     },
     Complete: {
         textAlign: 'center',
         fontSize: 26,
         lineHeight: 36,
         color: '#151515',
-        fontWeight: '700',
+        fontFamily: 'Kalam_700Bold',
     },
     complete_text: {
         textAlign: 'center',
@@ -97,7 +102,9 @@ const styles = StyleSheet.create({
         color: '#4C4C4C',
         maxWidth: 250,
         marginTop: 20,
-        marginBottom: 130,
+    },
+    button_box: {
+        marginBottom: '10%',
     }
 
 })

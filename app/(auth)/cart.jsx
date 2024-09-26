@@ -196,14 +196,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     borderRadius: 4,
     backgroundColor: '#ffffff',
-    shadowColor: '#000', // Black shadow color
+    shadowColor: '#000', 
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25, // 25% opacity
-    shadowRadius: 3.84,  // Blur radius
-    elevation: 5,        // Elevation for Android
+    shadowOpacity: 0.25, 
+    shadowRadius: 3.84,  
+    elevation: 5,        
   },  
   delivery: {
     fontSize: 10,

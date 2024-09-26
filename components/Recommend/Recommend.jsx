@@ -42,7 +42,7 @@ const Recommend = () => {
       <View style={styles.collection_container}>
         {collection_data.map((d) => (
           <View style={styles.image_box2} key={d.id}>
-            {d.image}
+           <Image source={d.image} alt='image' style={styles.image2} />
             <View
               style={[
                 styles.image_content2,
@@ -121,6 +121,11 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
   },
+  image2: {
+    width: '100%',
+    borderRadius: 10,
+    height: 214,
+  },
   image_content: {
     position: 'absolute',
     flexDirection: 'row',
@@ -153,11 +158,13 @@ const styles = StyleSheet.create({
   collection_container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
+    width: '100%',
+    marginVertical: 30,
   },
   image_box2: {
     position: 'relative',
+    width: '48%',
   },
   image_content2: {
     position: 'absolute',

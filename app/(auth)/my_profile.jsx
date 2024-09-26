@@ -43,6 +43,7 @@ const My_profile = () => {
                 style={styles.input}
                 autoCapitalize="none"
                 autoCorrect={false}
+                placeholder='Minato Namikaza'
               />
             </View>
             <View style={styles.name_input}>
@@ -50,6 +51,7 @@ const My_profile = () => {
               <TextInput
                 style={[styles.password_input, styles.passwordInput]}
                 secureTextEntry={!passwordVisible}
+                placeholder='Password'
               />
               <TouchableOpacity
                 onPress={togglePasswordVisibility}
@@ -67,6 +69,7 @@ const My_profile = () => {
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
+              placeholder='enter your number'
             />
           </View>
           </View>
@@ -78,6 +81,7 @@ const My_profile = () => {
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible1}
+            placeholder='Password'
           />
           <TouchableOpacity
             onPress={togglePasswordVisibility1}
@@ -95,6 +99,7 @@ const My_profile = () => {
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible2}
+            placeholder='Confirm Password'
           />
           <TouchableOpacity
             onPress={togglePasswordVisibility2}
@@ -127,7 +132,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 20,
-        gap: 50,
+        position: 'relative',
       },
       heading: {
         fontSize: 24,
@@ -136,6 +141,8 @@ const styles = StyleSheet.create({
         color: '#151515',
         marginLeft: 20,
         textTransform: 'capitalize',
+        position: 'absolute',
+        left: '29%',
       },
       main_label: {
         fontSize: 18,

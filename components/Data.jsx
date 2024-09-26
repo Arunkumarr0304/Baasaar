@@ -31,8 +31,8 @@ import Feature8 from "../assets/images/feature8.svg";
 import Recommend1 from "../assets/images/recommend1.svg";
 import Recommend2 from "../assets/images/recommend2.svg";
 
-import Collection2 from "../assets/images/collection2.svg";
-import Collection3 from "../assets/images/collection3.svg";
+import Collection2 from "../assets/images/collection2.png";
+import Collection3 from "../assets/images/collection3.png";
 
 import Star from "../assets/images/Star.svg";
 import White_Star from "../assets/images/White_star.svg";
@@ -269,13 +269,13 @@ export const recommend_data = [
 export const collection_data = [
     {
         id: 1,
-        image: <Collection3 />,
+        image: Collection2,
         heading: 'T-Shirts',
         text: 'The Office Life',
     },
     {
         id: 2,
-        image: <Collection2 />,
+        image: Collection3,
         heading: 'Dresses',
         text: 'Elegant Design',
     },
@@ -392,7 +392,7 @@ export const products_data = [
         Name: 'Apple watch series',
         rating: '4.9',
         brand: 'Apple',
-        price: '$199.99',
+        price: '199.99',
     },
     {
         id: 4,
@@ -400,7 +400,7 @@ export const products_data = [
         Name: 'Fastrack vyb mirage',
         rating: '4.9',
         brand: 'Apple',
-        price: '$279.99',
+        price: '279.99',
     },
     {
         id: 5,
@@ -408,7 +408,7 @@ export const products_data = [
         Name: 'sonata poze quartz',
         rating: '4.9',
         brand: 'Apple',
-        price: '$349.99',
+        price: '349.99',
     },
     {
         id: 6,
@@ -416,7 +416,7 @@ export const products_data = [
         Name: 'Titan minimalist',
         rating: '4.9',
         brand: 'Apple',
-        price: '$349.99',
+        price: '349.99',
     },
 
 ]
@@ -502,7 +502,7 @@ export const payment_data = [
     {
         id: 1,
         image: Card1,
-        cardno: '4364 1345 8932 8378',
+        cardno: '4364   1345   8932   8378',
         head1: "CARDHOLDER NAME",
         head2: 'Minato Namikaza',
         name: 'VALID THRU',
@@ -510,8 +510,8 @@ export const payment_data = [
     },
     {
         id: 2,
-        image: Card3,
-        cardno: '4364 1345 8932 8378',
+        image: Card2,
+        cardno: '4364   1345   8932   8378',
         head1: "CARDHOLDER NAME",
         head2: 'Minato Namikaza',
         name: 'VALID THRU',
@@ -520,7 +520,7 @@ export const payment_data = [
     {
         id: 3,
         image: Card3,
-        cardno: '4364 1345 8932 8378',
+        cardno: '4364   1345   8932   8378',
         head1: "CARDHOLDER NAME",
         head2: 'Minato Namikaza',
         name: 'VALID THRU',
@@ -879,7 +879,7 @@ export const details_data2 = [
 export const payment_data2 = [
     {
         id: 1,
-        image: <Card3 />,
+        image: Card3,
         cardno: '4364 1345 8932 8378',
         head1: "CARDHOLDER NAME",
         head2: 'Minato Namikaza',
@@ -888,7 +888,7 @@ export const payment_data2 = [
     },
     {
         id: 2,
-        image: <Card2 />,
+        image: Card2,
         cardno: '4364 1345 8932 8378',
         head1: "CARDHOLDER NAME",
         head2: 'Minato Namikaza',
@@ -896,3 +896,43 @@ export const payment_data2 = [
         date: '05/24',
     }
 ]
+
+export const input_datas = [
+    {
+        id: 1,
+        label: 'First Name',
+        placeholder: 'John Doe',
+    }, 
+    {
+        id: 2,
+        label:  'Last Name',
+        placeholder: 'John Doe',
+    },
+    {
+        id: 3,
+        label:  'Street Name',
+        placeholder: 'John Doe',
+    },
+    {
+        id: 4,
+        label:  'City',
+        placeholder: 'John Doe',
+    },
+    {
+        id: 5,
+        label:  'State',
+        placeholder: 'State',
+    },
+    {
+        id: 6,
+        label:  'ZIP Code',
+        placeholder: '573021',
+    },
+    {
+        id: 7,
+        label:  'Phone Number',
+        placeholder: 'enter number',
+    },
+]
+
+     

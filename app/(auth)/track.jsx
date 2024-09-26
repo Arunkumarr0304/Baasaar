@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     color: '#4C4C4C',
   },
   line: {
-    left: '4%',
+    left: '3%',
   },
   stack_container: {
     gap: 24,

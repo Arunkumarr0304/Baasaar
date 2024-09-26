@@ -113,7 +113,7 @@ export default function App() {
             <Pagination activePageIndex={activePageIndex} totalPages={totalPages} />
           </Animated.View>
           {activePageIndex === totalPages - 1 ? (
-            <View style={{ paddingTop: 15 }}>
+            <View style={{ }}>
               <Button buttonText="Get started"
                 backgroundColor="#FF0000"
                 textColor='#FFFFFF'  
@@ -121,7 +121,7 @@ export default function App() {
               />
             </View>
           ) : (
-            <View style={{ paddingTop: 15 }}>
+            <View style={{ }}>
               <Button buttonText="Next" backgroundColor="#FF0000" textColor='#ffffff' onPress={handleNextPress} />
             </View>
           )}
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#BABABA',
     fontStyle: 'normal',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   page_button_container: {
     flexDirection: 'row',
@@ -186,7 +186,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 30,
-    marginTop: 20,
     maxHeight: 50,
     minHeight: 50,
     width: 200,

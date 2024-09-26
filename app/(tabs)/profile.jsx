@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import Back from "../../assets/images/back.svg";
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 import Profiles from "../../assets/images/Profile.svg";
 import Dp from "../../assets/images/Dp.svg";
 import Arrow from "../../assets/images/profile_arrow.svg";
@@ -15,6 +15,7 @@ const Profile = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(darkMode);
   const [modalVisible, setModalVisible] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsEnabled2(darkMode);
@@ -26,7 +27,7 @@ const Profile = () => {
   const order = () => {
     router.push('myorder');
   };
-  const method = () => {
+  const pay = () => {
     router.push('payment_method');
   };
   const goback = () => {
@@ -74,7 +75,10 @@ const Profile = () => {
           <TouchableOpacity
             style={styles.line_box}
             key={d.id}
-            onPress={d.name === 'My Orders' ? order : d.name === 'Payments Methods' ? method : null}
+            onPress={() => {
+              if (d.name === 'My Orders') order();
+              else if (d.name === 'Payments Methods') pay();
+            }}
           >
             <View style={styles.left_line}>
               {darkMode ? d.Dark_icon : d.icon}
@@ -88,7 +92,7 @@ const Profile = () => {
         {profile_data2.map((d) => (
           <TouchableOpacity style={styles.line_box} key={d.id}>
             <View style={styles.left_line}>
-            {darkMode ? d.Dark_icon : d.icon}
+              {darkMode ? d.Dark_icon : d.icon}
               <Text style={[styles.line_text, { color: theme.text }]}>{d.name}</Text>
             </View>
             {d.id === 1 ? (
@@ -107,7 +111,7 @@ const Profile = () => {
             onPress={d.name === 'Logout' ? handleLogoutPress : null}
           >
             <View style={styles.left_line}>
-            {darkMode ? d.Dark_icon : d.icon}
+              {darkMode ? d.Dark_icon : d.icon}
               <Text style={[styles.line_text, { color: theme.text }]}>{d.name}</Text>
             </View>
             <Arrow />
@@ -124,11 +128,11 @@ const Profile = () => {
         }}
       >
         <View style={styles.modal_overlay}>
-          <View style={styles.modal_view}>
+          <View style={[styles.modal_view, {backgroundColor:theme.cardbg}]}>
             <View style={styles.image_box}>
               <Logout />
             </View>
-            <Text style={styles.modal_text}>Are you sure want to logout?</Text>
+            <Text style={[styles.modal_text, {color:theme.color}]}>Are you sure want to logout?</Text>
             <View style={styles.modal_buttons}>
               <TouchableOpacity
                 style={styles.button}
@@ -227,14 +231,15 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   profile_lines: {
-    gap: 35,
+    gap: 20,
     marginTop: 36,
   },
   profile_lines2: {
-    marginVertical: 20,
+    marginVertical: 10,
+    gap: 0,
   },
   profile_lines3: {
-    gap: 35,
+    gap: 20,
   },
   line_box: {
     flexDirection: 'row',
@@ -275,40 +280,37 @@ const styles = StyleSheet.create({
   modal_text: {
     marginVertical: 25,
     textAlign: 'center',
-    fontSize: 14,
-    lineHeight: 18,
-    fontWeight: '500',
-    color: '#000000',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   modal_buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    gap: 15,
   },
   button: {
     borderRadius: 10,
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: 25,
-    elevation: 2,
-    backgroundColor: '#EEEEEE',
-    width: '48%',
-    alignItems: 'center',
-  },
-  buttonLogout: {
-    backgroundColor: '#FF3B30',
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: 'gray',
   },
   textStyle: {
-    color: '#4C4C4C',
-    fontSize: 18,
-    lineHeight: 28,
-    fontWeight: '500',
+    color: 'gray',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
+  buttonLogout: {
+    backgroundColor: '#FF0000',
+  },
   textStyle2: {
-    color: '#ffffff',
-    fontSize: 18,
-    lineHeight: 28,
-    fontWeight: '500',
+    color: 'white',
+    fontWeight: 'bold',
     textAlign: 'center',
+  },
+  image_box: {
+    backgroundColor: '#E8E8E8',
+    borderRadius: 50,
+    padding: 20,
   },
 });

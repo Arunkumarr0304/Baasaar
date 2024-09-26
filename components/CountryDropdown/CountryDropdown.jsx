@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, FlatList } from 'react-native';
-import Drop from "../../assets/images/dropdown.svg"; // Ensure this path is correct
+import Drop from "../../assets/images/dropdown.svg"; 
 
 const countries = [
     { label: 'United States', value: 'US' },
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     width: '80%',
+    height: '50%',
     backgroundColor: 'white',
     borderRadius: 5,
     padding: 20,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   },
   closeButtonText: {
     fontSize: 16,
-    color: 'blue',
+    color: '#ffffff',
   },
 });
 

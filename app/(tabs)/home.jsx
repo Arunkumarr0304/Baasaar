@@ -47,7 +47,7 @@ const Home = () => {
           <Feather name="search" style={styles.searchIcon} />
           <TextInput
   style={styles.searchInput}
-  placeholder="Search..."
+  placeholder="Search Product Name"
   onPress={() => router.push('search')}
 />
         </View>

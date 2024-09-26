@@ -42,6 +42,7 @@ const Login = () => {
                 style={[styles.input]}
                 autoCapitalize="none"
                 autoCorrect={false}
+                placeholder='minatonami@example.com'
               />
             </View>
             <View style={styles.name_input}>
@@ -49,6 +50,7 @@ const Login = () => {
               <TextInput
                 style={[styles.password_input, styles.passwordInput]}
                 secureTextEntry={!passwordVisible}
+                placeholder='Password'
               />
               <TouchableOpacity
                 onPress={togglePasswordVisibility}

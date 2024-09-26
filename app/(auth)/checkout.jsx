@@ -7,7 +7,7 @@ import Line from "../../assets/images/line.svg";
 import Pay from "../../assets/images/pay.svg";
 import Tick from "../../assets/images/tick.png";
 import CountryDropdown from '../../components/CountryDropdown/CountryDropdown';
-import { shipping_method } from '../../components/Data';
+import { input_datas, shipping_method } from '../../components/Data';
 import Paycheck from '../../components/paycheck/Paycheck';
 import Button from '../../components/Button/Button';
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
@@ -66,18 +66,23 @@ const Checkout = () => {
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false} >
                 <Text style={[styles.shipping, {color: theme.color}]}>Shipping</Text>
                 <View style={styles.inputs_container}>
-                    {['First Name', 'Last Name', 'Street Name', 'City', 'State', 'ZIP Code', 'Phone Number'].map((label, index) => (
-                        <View style={styles.name_input} key={index}>
-                            <Text style={[styles.label, {color: theme.text}]}>{label}</Text>
+                    {
+                        input_datas.map((d) => (
+                        <View style={styles.name_input} key={d.id}>
+                            <Text style={[styles.label, {color: theme.text}]}>{d.label}</Text>
                             <TextInput
                                 style={styles.input}
                                 autoCapitalize="none"
                                 autoCorrect={false}
-                                keyboardType={label === 'ZIP Code' ? 'numeric' : (label === 'Phone Number' ? 'phone-pad' : 'default')}
-                                maxLength={label === 'ZIP Code' ? 5 : undefined}
+                                keyboardType={d.label === 'ZIP Code' ? 'numeric' : (d.label === 'Phone Number' ? 'phone-pad' : 'default')}
+                                maxLength={d.label === 'ZIP Code' ? 5 : undefined}
+                                placeholder={d.placeholder}
                             />
                         </View>
-                    ))}
+                        ))
+                    }
+                        
+                    
                     <View style={styles.name_input}>
                         <Text style={[styles.label2, {color: theme.text}]}>Country</Text>
                         <CountryDropdown />
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     shipping: {
         fontSize: 24,
         lineHeight: 34,
-        fontWeight: '400',
+        fontFamily: 'Kalam_400Regular',
         color: '#1D1F22',
         textTransform: 'capitalize',
         marginVertical: 10,

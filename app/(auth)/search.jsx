@@ -102,7 +102,7 @@ const Search = () => {
           <Feather name="search" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search..."
+            placeholder="Search "
             value={searchTerm}
             onChangeText={setSearchTerm}
             onSubmitEditing={handleSearch}
@@ -153,11 +153,11 @@ const Search = () => {
         <View style={styles.modalOverlay}>
           <View style={[styles.modalContainer, {backgroundColor: theme.cardbg}]}>
             
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <TouchableOpacity style={styles.full_view} onPress={() => setModalVisible(false)}>
               
               <Filters />
               <View style={styles.buttons_container}>
-              <Text style={styles.closeModal}>Close</Text>
+              <Text style={styles.closeModal}>Cancel</Text>
               <Text style={styles.closeModal2}>Apply</Text>
               </View>
             </TouchableOpacity>
@@ -287,6 +287,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 20,
     borderRadius: 10,
+  },
+  full_view: {
+    justifyContent: 'space-between',
+    flex: 1,
   },
   closeModal: {
     fontSize: 18,

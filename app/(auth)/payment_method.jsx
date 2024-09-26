@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Animated } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Animated, Image } from 'react-native';
 import React, {useContext, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import Back from "../../assets/images/back.svg";
@@ -35,23 +35,20 @@ const Payment_method = () => {
                 <Text style={[styles.choose, {color: theme.color}]}>Card Management</Text>
                 <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
-            <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
+            <View style={styles.main_swiper}>
             <Swiper
                 style={styles.swiper}
                 showsPagination={false}
                 onIndexChanged={handleCardZoom}
-                loop={false}
-                height={220}
+                loop={true}
             >
                 {
                     payment_data.map((d, index) => (
                         <Animated.View
-                            style={[styles.card, { transform: [{ scale: scaleAnim }] }]}
+                            style={[styles.card]}
                             key={d.id}
                         >
-                            <View style={styles.image_box}>
-                                {d.image}
-                            </View>
+                              <Image source={d.image} alt='image' style={styles.image} />
                             <View style={styles.card_content}>
                                 <Text style={styles.number}>{d.cardno}</Text>
                                 <View style={styles.row1}>
@@ -109,6 +106,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginBottom: 30,
     },
     choose: {
         fontSize: 16,
@@ -121,24 +119,30 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         fontWeight: '400',
         color: '#FF0000',
-    },swiper: {
-        paddingTop: 24,
-        maxHeight: 220,
+    },
+    main_swiper: {
+        height: 230,
+    },
+    swiper: {
+        height: '100%',
+        gap: 0,
     },
     card: {
-        alignItems: 'center',
         justifyContent: 'center',
-        maxHeight: 220,
+        alignItems: 'center',
+        height:'100%',
     },
-    image_box: {
+    image: {
         position: 'relative',
-        maxHeight: 220,
+        resizeMode:'contain',
+        width: '100%',
+        minHeight: '100%',
     },
     card_content: {
         position: 'absolute',
-        left: 20,
-        top: 70,
-        width: '80%',
+        bottom: '18%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     number: {
         fontSize: 20,
@@ -146,18 +150,21 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         color: '#ffffff',
         textAlign: 'center',
+        width: '100%',
     },
     row1: {
         flexDirection: 'row',
         justifyContent:'space-between',
         alignItems: 'center',
         marginTop: 25,
+        width: '85%',
     },
     row2: {
         marginTop: 8,
         flexDirection: 'row',
         alignItems:'center',
         justifyContent:'space-between',
+        width: '85%',
     },
     head1: {
         fontSize: 9,
@@ -184,5 +191,6 @@ const styles = StyleSheet.create({
         lineHeight: 26,
         fontWeight: '600',
         color: '#151515',
+        marginTop: 30,
     },
 })

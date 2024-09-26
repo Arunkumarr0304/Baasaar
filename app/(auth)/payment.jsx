@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView, Image, Dimensions } from 'react-native'
 import React, { useState, useRef, useContext } from 'react'
 import Swiper from 'react-native-swiper';
 import Back from "../../assets/images/back.svg";
@@ -13,6 +13,8 @@ import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Button from '../../components/Button/Button';
 import ThemeContext from '../../theme/ThemeContext';
+
+const { width, height } = Dimensions.get('window');
 
 const Payment = () => {
     const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
@@ -66,12 +68,11 @@ const Payment = () => {
                 <Line />
                 <Image source={Tick} alt='image' style={styles.tick} />
             </View>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.choose_row}>
                 <Text style={[styles.choose, {color: theme.text}]}>Choose Your Card</Text>
                 <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
-            <View style={{minHeight: 220, height: 220, maxHeight: 220}}>
             <Swiper
                 style={styles.swiper}
                 showsPagination={false}
@@ -82,12 +83,10 @@ const Payment = () => {
                 {
                     payment_data.map((d, index) => (
                         <Animated.View
-                            style={[styles.card, { transform: [{ scale: scaleAnim }] }]}
+                            style={[styles.card]}
                             key={d.id}
                         >
-                            <View style={styles.image_box}>
                               <Image source={d.image} alt='image' style={styles.image} />
-                            </View>
                             <View style={styles.card_content}>
                                 <Text style={styles.number}>{d.cardno}</Text>
                                 <View style={styles.row1}>
@@ -103,7 +102,6 @@ const Payment = () => {
                     ))
                 }
             </Swiper>
-            </View>
             <Text style={[styles.or, {color: theme.text}]}>Or checkout with</Text>
                 <ScrollView horizontal={true} style={styles.pay_container}>
                     {
@@ -176,6 +174,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginBottom: 30,
     },
     choose: {
         fontSize: 16,
@@ -190,30 +189,25 @@ const styles = StyleSheet.create({
         color: '#FF0000',
     },
     swiper: {
-        paddingTop: 24,
-        maxHeight: 220,
+        height: '100%',
+        gap: 0,
     },
     card: {
-        alignItems: 'center',
         justifyContent: 'center',
-        maxHeight: 220,
-        width: '100%',
-    },
-    image_box: {
-        position: 'relative',
-        maxHeight: 220,
-        width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        height:'100%',
     },
     image: {
-        width: '90%',
-        borderRadius: 15,
+        position: 'relative',
+        resizeMode:'contain',
+        width: '100%',
+        minHeight: '100%',
     },
     card_content: {
         position: 'absolute',
-        bottom: 10,
-        width: '70%',
+        bottom: '15%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     number: {
         fontSize: 20,
@@ -221,18 +215,21 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         color: '#ffffff',
         textAlign: 'center',
+        width: '100%',
     },
     row1: {
         flexDirection: 'row',
         justifyContent:'space-between',
         alignItems: 'center',
         marginTop: 25,
+        width: '85%',
     },
     row2: {
         marginTop: 8,
         flexDirection: 'row',
         alignItems:'center',
         justifyContent:'space-between',
+        width: '85%',
     },
     head1: {
         fontSize: 9,
@@ -251,6 +248,7 @@ const styles = StyleSheet.create({
         lineHeight: 26,
         fontWeight: '600',
         color: '#151515',
+        marginTop: 30,
     },
     price_container: {
         marginTop: 30,

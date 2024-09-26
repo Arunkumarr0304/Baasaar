@@ -6,6 +6,8 @@ import PriceSlider from '../Price_Slider/Price_Slider';
 import { circle_data, circledata2, discount_data } from '../Data';
 import Dress from "../../assets/images/Dress.svg";
 import Drop from "../../assets/images/category_drop_down.svg";
+import Dark_dress from "../../assets/images/dark_dress.svg";
+import Dark_drop from "../../assets/images/dark_dropdown.svg";
 import ThemeContext from '../../theme/ThemeContext';
 
 const Filters = () => {
@@ -68,27 +70,27 @@ const Filters = () => {
                 ))}
             </View>
             <Text style={[styles.price, {color: theme.color}]}>Category</Text>
-            <TouchableOpacity style={styles.categoryDropdown} onPress={toggleCategoryOptions}>
+            <TouchableOpacity style={[styles.categoryDropdown]} onPress={toggleCategoryOptions}>
                 <Text style={[styles.selectedCategory, {color: theme.color}]}>
                     {selectedCategory ? selectedCategory : 'Select category'}
                 </Text>
                 <View style={styles.image_box1}>
-                    <Dress />
+                   {darkMode? <Dark_dress /> : <Dress />}
                 </View>
                 <View style={styles.image_box2}>
-                    <Drop />
+                   {darkMode? <Dark_drop /> : <Drop />}
                 </View>
             </TouchableOpacity>
             {showCategoryOptions && (
-                <View style={styles.categoryOptions}>
+                <View style={[styles.categoryOptions, {backgroundColor:theme.cardbg}]}>
                     <TouchableOpacity onPress={() => selectCategory('Category 1')}>
-                        <Text style={styles.categoryOption}>Category 1</Text>
+                        <Text style={[styles.categoryOption, {color:theme.color}]}>Category 1</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => selectCategory('Category 2')}>
-                        <Text style={styles.categoryOption}>Category 2</Text>
+                        <Text style={[styles.categoryOption, {color:theme.color}]}>Category 2</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => selectCategory('Category 3')}>
-                        <Text style={styles.categoryOption}>Category 3</Text>
+                        <Text style={[styles.categoryOption, {color:theme.color}]}>Category 3</Text>
                     </TouchableOpacity>
                 </View>
             )}
