@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f6f6f6',
     paddingLeft: 20,
     paddingRight: 40,
-    paddingVertical: 13,
+    paddingVertical: 15,
     position: 'relative',
   },
   dropdownText: {

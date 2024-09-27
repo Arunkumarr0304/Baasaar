@@ -911,12 +911,12 @@ export const input_datas = [
     {
         id: 3,
         label:  'Street Name',
-        placeholder: 'John Doe',
+        placeholder: 'Street',
     },
     {
         id: 4,
         label:  'City',
-        placeholder: 'John Doe',
+        placeholder: 'City',
     },
     {
         id: 5,
@@ -931,7 +931,7 @@ export const input_datas = [
     {
         id: 7,
         label:  'Phone Number',
-        placeholder: 'enter number',
+        placeholder: 'Enter phone number',
     },
 ]
 

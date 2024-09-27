@@ -24,7 +24,7 @@ const Myorder = () => {
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={[styles.heading, {color: theme.color}]}> my order</Text>
+        <Text style={[styles.heading, {color: theme.color}]}> My Order</Text>
       </View>
       <TouchableOpacity style={styles.processing_box}>
         <Text style={styles.process}>Processing</Text>

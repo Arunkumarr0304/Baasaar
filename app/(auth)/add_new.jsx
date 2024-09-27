@@ -74,7 +74,7 @@ const Add_new = () => {
                     <TextInput
                         style={styles.input}
                         keyboardType="phone-pad"
-                        placeholder='5412363272837284'
+                        placeholder='**** **** **** 7284'
                     />
                 </View>
                 <View style={styles.input_row}>
@@ -83,7 +83,7 @@ const Add_new = () => {
                     <TextInput
                         style={styles.inputs}
                         keyboardType="phone-pad"
-                        placeholder='08/26'
+                        placeholder='mm/yy'
                     />
                 </View>
                 <View style={styles.name_input}>
@@ -91,7 +91,7 @@ const Add_new = () => {
                     <TextInput
                         style={styles.inputs}
                         keyboardType="phone-pad"
-                        placeholder='678'
+                        placeholder='***'
                     />
                 </View>
                 </View>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 20,
-        gap: 30,
+        position: 'relative',
     },
     heading: {
         fontSize: 24,
@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
         color: '#151515',
         marginLeft: 20,
         textTransform: 'capitalize',
+        position: 'absolute',
+        left: '30%',
     },
     main_swiper: {
         height: 230,

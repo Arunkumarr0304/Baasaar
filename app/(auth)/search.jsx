@@ -331,7 +331,6 @@ const styles = StyleSheet.create({
   buttons_container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 13,
+    justifyContent: 'space-between',
   }
 });

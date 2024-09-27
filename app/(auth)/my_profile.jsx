@@ -69,7 +69,7 @@ const My_profile = () => {
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
-              placeholder='enter your number'
+              placeholder='Enter your number'
             />
           </View>
           </View>

@@ -33,6 +33,10 @@ const Profile = () => {
   const goback = () => {
     router.push('home');
   };
+  const logouts = () => {
+    setModalVisible(false);
+    router.push('login');
+  };
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleSwitch2 = () => {
@@ -50,7 +54,7 @@ const Profile = () => {
         <TouchableOpacity onPress={goback}>
           <Back />
         </TouchableOpacity>
-        <Text style={[styles.heading, { color: theme.color }]}>profile</Text>
+        <Text style={[styles.heading, { color: theme.color }]}>Profile</Text>
       </View>
       <View style={styles.profile_container}>
         <TouchableOpacity style={styles.profile}>
@@ -142,10 +146,7 @@ const Profile = () => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, styles.buttonLogout]}
-                onPress={() => {
-                  // Handle logout logic here
-                  setModalVisible(false);
-                }}
+                onPress={logouts}
               >
                 <Text style={styles.textStyle2}>Logout</Text>
               </TouchableOpacity>
@@ -231,15 +232,15 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   profile_lines: {
-    gap: 20,
+    gap: 25,
     marginTop: 36,
   },
   profile_lines2: {
-    marginVertical: 10,
+    marginVertical: 15,
     gap: 0,
   },
   profile_lines3: {
-    gap: 20,
+    gap: 25,
   },
   line_box: {
     flexDirection: 'row',

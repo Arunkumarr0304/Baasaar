@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 20,
-        gap: 30,
+        position: 'relative',
     },
     heading: {
         fontSize: 24,
@@ -101,6 +101,8 @@ const styles = StyleSheet.create({
         color: '#151515',
         marginLeft: 20,
         textTransform: 'capitalize',
+        position: 'absolute',
+        left: '25%',
     },
     choose_row: {
         flexDirection: 'row',

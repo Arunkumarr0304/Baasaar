@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import {Link, router} from "expo-router";
 import ThemeContext from '../../theme/ThemeContext';
 import Back from "../../assets/images/back.svg";
+import { Kalam_700Bold } from '@expo-google-fonts/kalam';
 
 const Register = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
@@ -66,7 +67,7 @@ const Register = () => {
             <TextInput
               style={styles.input}
               keyboardType="phone-pad"
-              placeholder='enter mobile number'
+              placeholder='Enter mobile number'
             />
           </View>
           <View style={styles.name_input}>
@@ -74,7 +75,7 @@ const Register = () => {
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible}
-              placeholder='password'
+              placeholder='Password'
             />
             <TouchableOpacity
               onPress={togglePasswordVisibility}
@@ -92,7 +93,7 @@ const Register = () => {
             <TextInput
               style={[styles.password_input, styles.passwordInput]}
               secureTextEntry={!passwordVisible1}
-              placeholder='confirm password'
+              placeholder='Confirm password'
             />
             <TouchableOpacity
               onPress={togglePasswordVisibility1}
@@ -140,8 +141,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     lineHeight: 46,
-    fontWeight: '700',
-    fontStyle: 'italic',
+    fontFamily: 'Kalam_700Bold',
     color: '#070C18',
   },
   red: {
