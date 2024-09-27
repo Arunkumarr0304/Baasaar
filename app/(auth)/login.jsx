@@ -3,7 +3,7 @@ import React, {useContext, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/Button';
-import { login_items } from '../../components/Data';
+import { login_items } from '../../Data/Data';
 import {Link} from "expo-router";
 import {Redirect, router} from "expo-router";
 import ThemeContext from '../../theme/ThemeContext';

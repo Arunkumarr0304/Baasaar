@@ -4,7 +4,7 @@ import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
 import Order from "../../assets/images/order_stack_img.svg";
 import Delivered from "../../assets/images/delivered_stack_img.svg";
-import { ordered_data } from '../../components/Data';
+import { ordered_data } from '../../Data/Data';
 import Arrow from "../../assets/images/right_arrow.svg";
 import Dark_arrow from '../../assets/images/dark_right_arrow.svg';
 import ThemeContext from '../../theme/ThemeContext';
@@ -15,7 +15,7 @@ const Myorder = () => {
         router.push('profile');
     };
     const details = () => {
-        router.push('order_details');
+        router.push('(screens)/order_details');
     };
 
   return (

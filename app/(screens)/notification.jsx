@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-nati
 import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
-import { notification_data } from '../../components/Data';
+import { notification_data } from '../../Data/Data';
 import ThemeContext from '../../theme/ThemeContext';
 import Dark_notify from '../../assets/images/dark_notification.svg';
 

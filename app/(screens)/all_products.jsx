@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'rea
 import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import Filter from "../../assets/images/Filter.svg";
-import { products_data } from '../../components/Data';
+import { products_data } from '../../Data/Data';
 import Star from "../../assets/images/small_star";
 import { router } from 'expo-router';
 import ThemeContext from '../../theme/ThemeContext';
@@ -14,7 +14,7 @@ const All_products = () => {
         router.push('home');
       }
       const details = () => {
-        router.push('product_details');
+        router.push('(screens)/product_details');
       }
   return (
     <View style={[styles.all_products_page, {backgroundColor: theme.background}]}>

@@ -1,18 +1,20 @@
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView, Animated, Image  } from 'react-native';
-import React, { useContext, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Animated, Image } from 'react-native';
+import React, {useContext, useState} from 'react';
+import Swiper from 'react-native-swiper';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
-import Card from "../../assets/images/card1.png";
+import { pay_types, payment_data, payment_data2 } from '../../Data/Data';
 import ThemeContext from '../../theme/ThemeContext';
-import Button from "../../components/Button/Button";
-import Swiper from 'react-native-swiper';
-import { payment_data } from '../../components/Data';
 
-const Add_new = () => {
+
+const Payment_method = () => {
     const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const [scaleAnim] = useState(new Animated.Value(1));
-    const goback = () => {
-        router.push('payment');
+    const goback = () =>{
+        router.push('profile');
+    };
+    const add = () => {
+        router.push('(screens)/add_new');
     };
     const handleCardZoom = (index) => {
         Animated.spring(scaleAnim, {
@@ -20,15 +22,19 @@ const Add_new = () => {
             useNativeDriver: true,
         }).start();
     };
-    return (
-        <View style={[styles.container, {backgroundColor: theme.background}]}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={goback}>
-                    <Back />
-                </TouchableOpacity>
-                <Text style={[styles.heading, {color: theme.color}]}>Add New Card</Text>
+
+  return (
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
+    <View style={styles.header}>
+      <TouchableOpacity onPress={goback}>
+        <Back />
+      </TouchableOpacity>
+      <Text style={[styles.heading, {color: theme.color}]}>payment method</Text>
+    </View>
+    <View style={styles.choose_row}>
+                <Text style={[styles.choose, {color: theme.color}]}>Card Management</Text>
+                <TouchableOpacity onPress={add}><Text style={styles.add}>Add New+</Text></TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.main_swiper}>
             <Swiper
                 style={styles.swiper}
@@ -59,52 +65,21 @@ const Add_new = () => {
                 }
             </Swiper>
             </View>
-            <View style={styles.input_container}>
-                <View style={styles.name_input}>
-                    <Text style={[styles.label, {color: theme.color}]}>Cardholder Name</Text>
-                    <TextInput
-                        style={styles.input}
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        placeholder='Minato Namikaza'
-                    />
-                </View>
-                <View style={styles.name_input}>
-                    <Text style={[styles.label, {color: theme.color}]}>Card Number</Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType="phone-pad"
-                        placeholder='**** **** **** 7284'
-                    />
-                </View>
-                <View style={styles.input_row}>
-                <View style={styles.name_input}>
-                    <Text style={[styles.label, {color: theme.color}]}>Expires</Text>
-                    <TextInput
-                        style={styles.inputs}
-                        keyboardType="phone-pad"
-                        placeholder='mm/yy'
-                    />
-                </View>
-                <View style={styles.name_input}>
-                    <Text style={[styles.label, {color: theme.color}]}>CVV</Text>
-                    <TextInput
-                        style={styles.inputs}
-                        keyboardType="phone-pad"
-                        placeholder='***'
-                    />
-                </View>
-                </View>
-            </View> 
-            </ScrollView>
-            <View style={styles.button_box}>
-            <Button buttonText="Add Card" />
-            </View>
-        </View>
-    )
+            <Text style={[styles.or, {color:theme.color}]}>Or checkout with</Text>
+                <ScrollView horizontal={true} style={styles.pay_container}>
+                    {
+                        pay_types.map((d) => (
+                            <TouchableOpacity style={styles.slide_images} key={d.id} >
+                                {d.image}
+                            </TouchableOpacity>
+                        ))
+                    }
+                </ScrollView>
+    </View>
+  )
 }
 
-export default Add_new;
+export default Payment_method;
 
 const styles = StyleSheet.create({
     container: {
@@ -127,7 +102,25 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         textTransform: 'capitalize',
         position: 'absolute',
-        left: '30%',
+        left: '25%',
+    },
+    choose_row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 30,
+    },
+    choose: {
+        fontSize: 16,
+        lineHeight: 26,
+        fontWeight: '600',
+        color: '#151515',
+    },
+    add: {
+        fontSize: 16,
+        lineHeight: 24,
+        fontWeight: '400',
+        color: '#FF0000',
     },
     main_swiper: {
         height: 230,
@@ -187,46 +180,19 @@ const styles = StyleSheet.create({
         lineHeight: 11,
         fontWeight: '800',
     },
-    input_container: {
-        marginTop: 31,
-        gap: 10,
-    },
-    name_input: {
-        marginBottom: 0,
-    },
-    label: {
-        fontSize: 14,
-        lineHeight: 24,
-        fontWeight: '600',
-        color: '#070C18',
-        padding: 5,
-        marginBottom: 5,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: 'transparent',
-        borderRadius: 15,
-        paddingVertical: 13,
-        paddingLeft: 20,
-        paddingRight: 55,
-        backgroundColor: '#f6f6f6',
-    },
-    inputs: {
-        borderWidth: 1,
-        borderColor: 'transparent',
-        borderRadius: 15,
-        paddingVertical: 13,
-        paddingLeft: 20,
-        paddingRight: 55,
-        backgroundColor: '#f6f6f6',
-        minWidth: 140,
-    },
-    input_row: {
+    pay_container: {
         flexDirection: 'row',
-        alignItems: 'center',
-        gap: 20,
+        maxHeight: 40,
+        marginTop: 20,
     },
-    button_box: {
-        marginBottom: '10%',
-    }
+    slide_images: {
+        marginRight: 20,
+    },
+    or: {
+        fontSize: 16,
+        lineHeight: 26,
+        fontWeight: '600',
+        color: '#151515',
+        marginTop: 30,
+    },
 })

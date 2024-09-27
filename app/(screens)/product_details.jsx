@@ -5,7 +5,7 @@ import Notification from "../../assets/images/notification.svg";
 import Dark_Notify from "../../assets/images/dark_notification.svg";
 import Details from "../../assets/images/details_img.svg";
 import Star from "../../assets/images/Big_star";
-import { circle_data2, details_review } from '../../components/Data';
+import { circle_data2, details_review } from '../../Data/Data';
 import Button from "../../components/Button/Button";
 import Cart from "../../assets/images/Buy_cart.svg";
 import {Redirect, router} from "expo-router";
@@ -17,14 +17,14 @@ const ProductDetails = () => {
   const [activeHeading, setActiveHeading] = useState(details_review[0].id);
 
   const cart = () =>{
-    router.push('cart');
+    router.push('(screens)/cart');
   } 
 
   const goback = () =>{
     router.push('home');
   }
   const notification = () => {
-    router.push('notification');
+    router.push('(screens)/notification');
   }
 
   return (

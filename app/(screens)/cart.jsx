@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 
 import React, { useContext, useState } from 'react'
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
-import { cart_data } from '../../components/Data';
+import { cart_data } from '../../Data/Data';
 import Button from '../../components/Button/Button';
 import ThemeContext from '../../theme/ThemeContext';
 import Coupon from "../../assets/images/coupon.svg";
@@ -13,10 +13,10 @@ const Cart = () => {
   const [promoCode, setPromoCode] = useState("");
 
   const goback = () => {
-    router.push('product_details');
+    router.push('(screens)/product_details');
   }
   const continues = () => {
-    router.push('checkout');
+    router.push('(screens)/checkout');
   }
   const handleChangeText = (value) => {
     setPromoCode(value);

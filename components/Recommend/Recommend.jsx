@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import React, { useContext } from 'react';
-import { collection_data, recommend_data } from '../Data';
+import { collection_data, recommend_data } from '../../Data/Data';
 import Collection from "../../assets/images/top_collection.png";
 import Right from "../../assets/images/top_collection_group.svg";
 import {Link} from "expo-router";

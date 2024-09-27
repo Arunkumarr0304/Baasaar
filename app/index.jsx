@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback, useContext } from "rea
 import { View, Text, StyleSheet, Dimensions, ScrollView, StatusBar, Animated, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
-import { pages } from "../components/Data";
+import { pages } from "../Data/Data";
 import { router } from "expo-router";
 import Button from "../components/Button/Button";
 import Pagination from "../components/Pagination/Pagination";

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
 import { router } from 'expo-router';
-import { cart_data, details_data } from '../../components/Data';
+import { cart_data, details_data } from '../../Data/Data';
 import Arrow from "../../assets/images/right_arrow.svg";
 import ThemeContext from '../../theme/ThemeContext';
 import Dark_arrow from '../../assets/images/dark_right_arrow.svg';
@@ -11,10 +11,10 @@ import Van from "../../assets/images/van2.svg";
 const Order_details = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
-        router.push('myorder');
+        router.push('(screens)/myorder');
     };
     const track = () => {
-      router.push('track');
+      router.push('(screens)/track');
     };
   return (
     <View style={[styles.container, {backgroundColor: theme.background}]}>

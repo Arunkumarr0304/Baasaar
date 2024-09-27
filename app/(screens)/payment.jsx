@@ -8,7 +8,7 @@ import Line from "../../assets/images/line.svg";
 import RedLine from "../../assets/images/red_line.svg";
 import Pay from "../../assets/images/red-pay.svg";
 import Tick from "../../assets/images/tick.png";
-import { pay_types, payment_data, price_data } from '../../components/Data';
+import { pay_types, payment_data, price_data } from '../../Data/Data';
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Button from '../../components/Button/Button';
@@ -22,10 +22,10 @@ const Payment = () => {
     const [scaleAnim] = useState(new Animated.Value(1));
 
     const add = () => {
-        router.push('add_new');
+        router.push('(screens)/add_new');
     };
     const order = () => {
-        router.push('order_confirm');
+        router.push('(screens)/order_confirm');
     }
     const handleCardZoom = (index) => {
         Animated.spring(scaleAnim, {
@@ -35,7 +35,7 @@ const Payment = () => {
     };
 
     const goback = () => {
-        router.push('checkout');
+        router.push('(screens)/checkout');
     };
 
     const toggleCheckbox = () => {

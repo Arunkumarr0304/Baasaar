@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 import Profiles from "../../assets/images/Profile.svg";
 import Dp from "../../assets/images/Dp.svg";
 import Arrow from "../../assets/images/profile_arrow.svg";
-import { profile_data, profile_data2, profile_data3 } from '../../components/Data';
+import { profile_data, profile_data2, profile_data3 } from '../../Data/Data';
 import CustomSwitch from '../../components/Switch/Custom_switch';
 import Logout from "../../assets/images/logout.svg";
 import ThemeContext from "../../theme/ThemeContext";
@@ -22,13 +22,13 @@ const Profile = () => {
   }, [darkMode]);
 
   const edit = () => {
-    router.push('my_profile');
+    router.push('(screens)/my_profile');
   };
   const order = () => {
-    router.push('myorder');
+    router.push('(screens)/myorder');
   };
   const pay = () => {
-    router.push('payment_method');
+    router.push('(screens)/payment_method');
   };
   const goback = () => {
     router.push('home');
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   profile_lines: {
-    gap: 25,
+    gap: 16,
     marginTop: 36,
   },
   profile_lines2: {
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   profile_lines3: {
-    gap: 25,
+    gap: 16,
   },
   line_box: {
     flexDirection: 'row',

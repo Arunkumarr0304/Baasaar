@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Filter from "../../assets/images/Filter.svg";
 import Dark_filter from "../../assets/images/dark_filter.svg";
 import PriceSlider from '../Price_Slider/Price_Slider';
-import { circle_data, circledata2, discount_data } from '../Data';
+import { circle_data, circledata2, discount_data } from '../../Data/Data';
 import Dress from "../../assets/images/Dress.svg";
 import Drop from "../../assets/images/category_drop_down.svg";
 import Dark_dress from "../../assets/images/dark_dress.svg";

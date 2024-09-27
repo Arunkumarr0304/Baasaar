@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import React, { useContext } from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
-import { wishlist_data } from '../../components/Data';
+import { wishlist_data } from '../../Data/Data';
 import ThemeContext from '../../theme/ThemeContext';
 
 const Wishlist = () => {

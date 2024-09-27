@@ -6,7 +6,7 @@ import Filter from "../../assets/images/Filter.svg";
 import Feather from 'react-native-vector-icons/Feather';
 import Trash from "../../assets/images/Trash.svg";
 import Close from "../../assets/images/Close.svg";
-import { feature_data } from '../../components/Data';
+import { feature_data } from '../../Data/Data';
 import { router } from 'expo-router';
 import Filters from '../../components/Filter_content/Filter_content';
 import ThemeContext from '../../theme/ThemeContext';
@@ -20,7 +20,7 @@ const Search = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const details = () => {
-    router.push('product_details');
+    router.push('(screens)/product_details');
   }
 
   const goback = () => {

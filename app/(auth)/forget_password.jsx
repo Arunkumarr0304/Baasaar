@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, {useContext, useState} from 'react'
-import { forget_data } from '../../components/Data';
+import { forget_data } from '../../Data/Data';
 import CheckCircle from '../../components/Check_Circle/Check_Circle';
 import Button from '../../components/Button/Button';
 import { useNavigation } from '@react-navigation/native';

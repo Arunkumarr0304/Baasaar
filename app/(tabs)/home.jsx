@@ -10,7 +10,7 @@ import Logo from '../../assets/images/logo.svg';
 import Dark_logo from '../../assets/images/dark_logo.svg';
 import Feather from 'react-native-vector-icons/Feather';
 import Swiper from 'react-native-swiper';
-import { scroll_slider, slider_data } from '../../components/Data';
+import { scroll_slider, slider_data } from '../../Data/Data';
 import Arrows from "../../assets/images/slider_arrow.svg";
 import Feature from '../../components/Feature/Feature';
 import Recommend from '../../components/Recommend/Recommend';
@@ -22,7 +22,7 @@ const Home = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
   const [activeId, setActiveId] = useState(scroll_slider[0].id);
   const notification = () => {
-    router.push('notification');
+    router.push('(screens)/notification');
   }
 
   return (
@@ -48,7 +48,7 @@ const Home = () => {
           <TextInput
   style={styles.searchInput}
   placeholder="Search Product Name"
-  onPress={() => router.push('search')}
+  onPress={() => router.push('(screens)/search')}
 />
         </View>
         <Swiper

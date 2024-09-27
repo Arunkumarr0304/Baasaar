@@ -18,7 +18,7 @@ const Order = () => {
     }
     const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
     const goback = () => {
-        router.push('payment');
+        router.push('(screens)/payment');
     };
   return (
     <View style={[styles.order_page, {backgroundColor: theme.background}]}>

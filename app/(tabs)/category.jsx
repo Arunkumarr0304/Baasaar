@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-nati
 import React, { useContext, useState } from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
-import { category_data, category_tab } from '../../components/Data';
+import { category_data, category_tab } from '../../Data/Data';
 import Dropdown from "../../assets/images/dropdown.svg";
 import Dropup from "../../assets/images/red_dropup.svg";
 import ThemeContext from '../../theme/ThemeContext';

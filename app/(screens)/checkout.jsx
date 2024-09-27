@@ -7,7 +7,7 @@ import Line from "../../assets/images/line.svg";
 import Pay from "../../assets/images/pay.svg";
 import Tick from "../../assets/images/tick.png";
 import CountryDropdown from '../../components/CountryDropdown/CountryDropdown';
-import { input_datas, shipping_method } from '../../components/Data';
+import { input_datas, shipping_method } from '../../Data/Data';
 import Paycheck from '../../components/paycheck/Paycheck';
 import Button from '../../components/Button/Button';
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ const Checkout = () => {
     const [selectedMethod, setSelectedMethod] = useState(null);
 
     const payment = () => {
-        router.push('payment');
+        router.push('(screens)/payment');
     };
 
     const handlePress = (id) => {
@@ -29,7 +29,7 @@ const Checkout = () => {
     };
 
     const goback = () => {
-        router.push('cart');
+        router.push('(screens)/cart');
     };
 
     const toggleCheckbox = () => {

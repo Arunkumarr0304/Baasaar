@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import React, { useContext } from 'react';
-import { feature_data } from '../Data';
+import { feature_data } from '../../Data/Data';
 import Collection from "../../assets/images/collection.png";
 import Right from "../../assets/images/collection_group.svg";
 import {Link, router} from "expo-router";
@@ -10,7 +10,7 @@ import ThemeContext from '../../theme/ThemeContext';
 const Feature = () => {
   const { theme, darkMode, toggleTheme } = useContext(ThemeContext);
    const details = () => {
-    router.push('product_details');
+    router.push('(screens)/product_details');
    }
   return (
     <View style={styles.feature_section}>
