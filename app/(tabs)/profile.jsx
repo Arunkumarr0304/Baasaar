@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
   },
   profile_lines2: {
     marginVertical: 15,
-    gap: 0,
+    gap: 16,
   },
   profile_lines3: {
     gap: 25,
