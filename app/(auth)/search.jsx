@@ -21,7 +21,7 @@ const Search = () => {
 
   const details = () => {
     router.push('product_details');
-   }
+  }
 
   const goback = () => {
     router.push('home');
@@ -93,7 +93,7 @@ const Search = () => {
   };
 
   return (
-    <View style={[styles.search_page, {backgroundColor: theme.background}]}>
+    <View style={[styles.search_page, { backgroundColor: theme.background }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={goback}>
           <Back />
@@ -114,7 +114,7 @@ const Search = () => {
       </View>
       <ScrollView>
         <View style={styles.recent}>
-          <Text style={[styles.recent_head, {color: theme.color}]}>Recent Search</Text>
+          <Text style={[styles.recent_head, { color: theme.color }]}>Recent Search</Text>
           <Trash />
         </View>
         <View style={styles.searchHistory}>
@@ -128,22 +128,22 @@ const Search = () => {
           ))}
         </View>
         <View style={styles.Popular}>
-          <Text style={[styles.recent_head, {color: theme.color}]}>Popular this week</Text>
-          <Text style={[styles.show, {color: theme.text}]}>Show all</Text>
+          <Text style={[styles.recent_head, { color: theme.color }]}>Popular this week</Text>
+          <Text style={[styles.show, { color: theme.text }]}>Show all</Text>
         </View>
         <ScrollView horizontal={true} style={styles.featureContainer}>
           {filteredFeatures.map((d) => (
             <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details} >
               {d.image}
               <View style={styles.box_body}>
-                <Text style={[styles.box_heading, {color: theme.text}]}>{d.heading}</Text>
+                <Text style={[styles.box_heading, { color: theme.text }]}>{d.heading}</Text>
                 <Text style={styles.price}>${d.price}</Text>
               </View>
             </TouchableOpacity>
           ))}
         </ScrollView>
       </ScrollView>
-      
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -151,16 +151,19 @@ const Search = () => {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
-          <View style={[styles.modalContainer, {backgroundColor: theme.cardbg}]}>
-            
-            <TouchableOpacity style={styles.full_view} onPress={() => setModalVisible(false)}>
-              
+          <View style={[styles.modalContainer, { backgroundColor: theme.cardbg }]}>
+
+            <View style={styles.full_view}>
               <Filters />
               <View style={styles.buttons_container}>
-              <Text style={styles.closeModal}>Cancel</Text>
-              <Text style={styles.closeModal2}>Apply</Text>
+                <TouchableOpacity style={styles.closeModal} onPress={() => setModalVisible(false)}>
+                  <Text style={styles.closemodal_text1}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.closeModal2} onPress={() => setModalVisible(false)}>
+                  <Text style={styles.closemodal_text2} >Apply</Text>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -188,7 +191,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     borderRadius: 10,
     flex: 1,
-    marginHorizontal: 10, 
+    marginHorizontal: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
@@ -244,7 +247,7 @@ const styles = StyleSheet.create({
   Popular: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     marginTop: 30,
   },
   show: {
@@ -293,10 +296,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   closeModal: {
-    fontSize: 18,
-    lineHeight: 28,
-    fontWeight: '600',
-    color: '#4C4C4C',
     marginTop: 20,
     borderRadius: 5,
     borderWidth: 1,
@@ -304,18 +303,30 @@ const styles = StyleSheet.create({
     backgroundColor: '#D6D6D6',
     paddingVertical: 10,
     paddingHorizontal: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  closeModal2: {
+  closemodal_text1: {
     fontSize: 18,
     lineHeight: 28,
     fontWeight: '600',
-    color: '#ffffff',
+    color: '#4C4C4C',
+  },
+  closeModal2: {
     marginTop: 20,
     borderRadius: 5,
     borderColor: '#D6D6D6',
     backgroundColor: '#FF0000',
     paddingVertical: 10,
     paddingHorizontal: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  closemodal_text2: {
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+    color: '#ffffff',
   },
   buttons_container: {
     flexDirection: 'row',

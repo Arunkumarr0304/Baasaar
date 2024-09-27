@@ -195,11 +195,13 @@ const styles = StyleSheet.create({
     lineHeight: 14,
     fontWeight: '500',
     color: '#E6006E',
+    marginTop: 10,
   },
   price_row: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 2,
+    marginTop: 5,
   },
   dashed: {
     fontSize: 12,

@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
         lineHeight: 14,
         fontWeight: '500',
         color: '#E6006E',
+        marginTop: 10,
       },
       row3: {
         flexDirection: 'row',
@@ -191,6 +192,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 2,
+        marginTop: 5,
       },
       dashed: {
         fontSize: 12,
