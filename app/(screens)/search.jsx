@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TextInput, TouchableOpacity, Modal, Pressable, Image } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Back from "../../assets/images/back.svg";
@@ -134,7 +134,7 @@ const Search = () => {
         <ScrollView horizontal={true} style={styles.featureContainer}>
           {filteredFeatures.map((d) => (
             <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details} >
-              {d.image}
+             <Image source={d.image} alt='image' style={styles.image} />
               <View style={styles.box_body}>
                 <Text style={[styles.box_heading, { color: theme.text }]}>{d.heading}</Text>
                 <Text style={styles.price}>${d.price}</Text>
@@ -262,6 +262,10 @@ const styles = StyleSheet.create({
   },
   feature_box: {
     marginRight: 10,
+  },
+  image: {
+    width: 126,
+    height: 172,
   },
   box_body: {
     gap: 3,

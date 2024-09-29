@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Image } from 'react-native';
 import Back from "../../assets/images/back.svg";
 import { useRouter } from 'expo-router';
-import Profiles from "../../assets/images/Profile.svg";
+import Profiles from "../../assets/images/Profile.png";
 import Dp from "../../assets/images/Dp.svg";
 import Arrow from "../../assets/images/profile_arrow.svg";
 import { profile_data, profile_data2, profile_data3 } from '../../Data/Data';
@@ -58,7 +58,7 @@ const Profile = () => {
       </View>
       <View style={styles.profile_container}>
         <TouchableOpacity style={styles.profile}>
-          <Profiles />
+          <Image source={Profiles} alt='image' style={styles.image} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.dp}>
           <Dp />
@@ -185,13 +185,18 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   profile: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: 114,
+    height: 114,
     position: 'relative',
-    maxWidth: 114,
   },
   dp: {
     position: 'absolute',
     bottom: 0,
-    right: 120,
+    right:'35%',
   },
   edit_row: {
     flexDirection: 'row',

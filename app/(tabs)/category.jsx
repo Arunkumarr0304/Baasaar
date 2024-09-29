@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { router } from 'expo-router';
 import Back from "../../assets/images/back.svg";
@@ -54,7 +54,7 @@ const Category = () => {
                 style={[styles.dropdownBox, {backgroundColor:theme.cardbg}]} 
                 onPress={() => toggleDropdown(d.id)}
               >
-                {d.image}
+                <Image source={d.image} alt='image' style={styles.image} />
                 <Text style={[styles.dropdownText, {color: theme.color}]}>{d.name}</Text>
                 {openDropdowns[d.id] ? <Dropup /> : <Dropdown />}
               </TouchableOpacity>
@@ -152,6 +152,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25, 
     shadowRadius: 3.84,  
     elevation: 5,
+  },
+  image: {
+    width: 47,
+    height: 44,
   },
   dropdownText: {
     marginLeft: 10,

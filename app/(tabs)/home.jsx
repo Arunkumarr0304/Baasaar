@@ -82,7 +82,9 @@ const Home = () => {
                     </View>
                   </TouchableOpacity>
                 </View>
-                <View style={styles.slider_right}>{d.right}</View>
+                <View style={styles.slider_right}>
+                  <Image source={d.right} alt='image' style={styles.image2} />
+                  </View>
               </View>
             </View>
           ))}
@@ -192,6 +194,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   slider_right: {},
+  image2: {
+    width: 150,
+    height: 150,
+  },
   left_text1: {
     fontSize: 14,
     lineHeight: 24,

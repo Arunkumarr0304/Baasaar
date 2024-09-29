@@ -22,7 +22,7 @@ const Feature = () => {
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
         {feature_data.map((d) => (
           <TouchableOpacity style={styles.feature_box} key={d.id} onPress={details}>
-            {d.image}
+           <Image source={d.image} alt='image' style={styles.image2} />
             <View style={styles.box_body}>
               <Text style={[styles.box_heading, {color: theme.text}]}>{d.heading}</Text>
               <Text style={styles.price}>${d.price}</Text>
@@ -40,7 +40,7 @@ const Feature = () => {
           <Right />
         </View>
       </View>
-    </View>
+    </View> 
   )
 }
 
@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
   },
   feature_box: {
     marginRight: 10,
+  },
+  image2: {
+    width: 126,
+    height: 172,
   },
   box_body: {
     gap: 3,

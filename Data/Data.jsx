@@ -6,7 +6,7 @@ import Google from "../assets/images/google.svg";
 import Facebook from "../assets/images/facebook.svg";
 import Forget from "../assets/images/Circle_mail.svg";
 import Bg from "../assets/images/slider_bg.png";
-import Slider_right from "../assets/images/slider_right_image.svg";
+import Slider_right from "../assets/images/slider_right_image.png";
 
 import Slider1 from "../assets/images/slider_vector1.svg";
 import Slider2 from "../assets/images/slider_vector2.svg";
@@ -19,14 +19,14 @@ import Active_slider3 from "../assets/images/white_slider_vector3.svg";
 import Active_slider4 from "../assets/images/white_slider_vector4.svg";
 import Active_slider5 from "../assets/images/white_slider_vector5.svg";
 
-import Feature1 from "../assets/images/feature1.svg";
-import Feature2 from "../assets/images/feature2.svg";
-import Feature3 from "../assets/images/feature3.svg";
-import Feature4 from "../assets/images/feature4.svg";
-import Feature5 from "../assets/images/feature5.svg";
-import Feature6 from "../assets/images/feature6.svg";
-import Feature7 from "../assets/images/feature7.svg";
-import Feature8 from "../assets/images/feature8.svg";
+import Feature1 from "../assets/images/feature1.png";
+import Feature2 from "../assets/images/feature2.png";
+import Feature3 from "../assets/images/feature3.png";
+import Feature4 from "../assets/images/feature4.png";
+import Feature5 from "../assets/images/feature5.png";
+import Feature6 from "../assets/images/feature6.png";
+import Feature7 from "../assets/images/feature7.png";
+import Feature8 from "../assets/images/feature4.png";
 
 import Recommend1 from "../assets/images/recommend1.svg";
 import Recommend2 from "../assets/images/recommend2.svg";
@@ -60,11 +60,11 @@ import Pay5 from "../assets/images/pay5.svg";
 import Wishlist1 from "../assets/images/wishlist1.png";
 import Wishlist2 from "../assets/images/wishlist2.png";
 
-import Category1 from "../assets/images/category1.svg";
-import Category2 from "../assets/images/category2.svg";
-import Category3 from "../assets/images/category3.svg";
-import Category4 from "../assets/images/category4.svg";
-import Category5 from "../assets/images/category5.svg";
+import Category1 from "../assets/images/category1.png";
+import Category2 from "../assets/images/category2.png";
+import Category3 from "../assets/images/category3.png";
+import Category4 from "../assets/images/category4.png";
+import Category5 from "../assets/images/category5.png";
 
 import Opened from "../assets/images/opened.svg";
 import NotOpened from "../assets/images/notopened.svg";
@@ -137,7 +137,7 @@ export const slider_data = [
     {
         id: 1,
         background_image: Bg,
-        right: <Slider_right />,
+        right: Slider_right,
         heading: "Shop with us!",
         heading2 : "Get",
         heading3 : " Off for all items",
@@ -147,7 +147,7 @@ export const slider_data = [
     {
         id: 2,
         background_image: Bg,
-        right: <Slider_right />,
+        right: Slider_right,
         heading: "Shop with us!",
         heading2 : "Get",
         heading3 : " Off for all items",
@@ -157,7 +157,7 @@ export const slider_data = [
     {
         id: 3,
         background_image: Bg,
-        right: <Slider_right />,
+        right: Slider_right,
         heading: "Shop with us!",
         heading2 : "Get",
         heading3 : " Off for all items",
@@ -202,49 +202,49 @@ export const scroll_slider = [
 export const feature_data = [
     {
         id: 1,
-        image: <Feature1 />,
+        image: Feature1 ,
         heading: "Turtleneck Sweater",
         price: " 39.99",
     },
     {
         id: 2,
-        image: <Feature2 />,
+        image: Feature2,
         heading: "Long Sleeve Dress",
         price: " 45.00",
     },
     {
         id: 3,
-        image: <Feature3 />,
+        image: Feature3,
         heading: "Sportwear Set",
         price: " 80.00",
     },
     {
         id: 4,
-        image: <Feature4 />,
+        image: Feature4,
         heading: "Elegant Dress",
         price: " 75.00",
     },
     {
         id: 5,
-        image: <Feature5 />,
+        image: Feature5,
         heading: "Apple Watch SE",
         price: " 39.99",
     },
     {
         id: 6,
-        image: <Feature6 />,
+        image: Feature6,
         heading: "Apple Watch SE",
         price: " 45.00",
     },
     {
         id: 7,
-        image: <Feature7 />,
+        image: Feature7,
         heading: "Long Sleeve Dress",
         price: " 80.00",
     },
     {
         id: 8,
-        image: <Feature8 />,
+        image: Feature8,
         heading: "Elegant Dress",
         price: " 75.00",
     },
@@ -617,7 +617,7 @@ export const category_tab = [
 export const category_data = [
     {
         id: 1,
-        image: <Category1 width={24} height={24} />,
+        image: Category1,
         name: 'Clothing',
         content: [
             {
@@ -637,7 +637,7 @@ export const category_data = [
     },
     {
         id: 2,
-        image: <Category2 width={24} height={24} />,
+        image: Category2,
         name: 'Shoes',
         content: [
             {
@@ -657,7 +657,7 @@ export const category_data = [
     },
     {
         id: 3,
-        image: <Category3 width={24} height={24} />,
+        image: Category3,
         name: 'Bags',
         content: [
             {
@@ -677,7 +677,7 @@ export const category_data = [
     },
     {
         id: 4,
-        image: <Category4 width={24} height={24} />,
+        image: Category4,
         name: 'Lingerie',
         content: [
             {
@@ -697,7 +697,7 @@ export const category_data = [
     },
     {
         id: 5,
-        image: <Category5 width={24} height={24} />,
+        image: Category5,
         name: 'Accessories',
         content: [
             {
